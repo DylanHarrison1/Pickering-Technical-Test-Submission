@@ -1,0 +1,336 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pickering.Lxi.Vxi11</name>
+    </assembly>
+    <members>
+        <member name="T:Pickering.Lxi.Vxi11.DeviceInfo">
+            <summary>
+            Class for storing information about found devices.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Vxi11.DeviceInfo.Description">
+            <summary>
+            String received from device when querrying it with *IDN? command.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Vxi11.DeviceInfo.Firmware">
+            <summary>
+            Device firmware revision extracted from <see cref="P:Pickering.Lxi.Vxi11.DeviceInfo.Description"/>.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Vxi11.DeviceInfo.Host">
+            <summary>
+            IP address of instrument that was found on network using VXI-11 discovery.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Vxi11.DeviceInfo.Model">
+            <summary>
+            Device model name extracted from <see cref="P:Pickering.Lxi.Vxi11.DeviceInfo.Description"/>.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Vxi11.DeviceInfo.Name">
+            <summary>
+            String name of device inside instrument (e.g. inst0, inst1 etc.).
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Vxi11.DeviceInfo.SerialNumber">
+            <summary>
+            Device serial number extracted from <see cref="P:Pickering.Lxi.Vxi11.DeviceInfo.Description"/>.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Vxi11.DeviceInfo.#ctor(Pickering.Lxi.Vxi11.InternalDeviceInfo)">
+            <summary>
+            Internal constructor for transfering from <see cref="T:Pickering.Lxi.Vxi11.InternalDeviceInfo"/> into DeviceInfo.
+            </summary>
+            <param name="internalDeviceInfo"></param>
+        </member>
+        <member name="T:Pickering.Lxi.Vxi11.DiscoveryParameters">
+            <summary>
+            Structure that contains parameters of discovery calls. Mostly timeouts.
+            </summary>
+            <remarks>
+            Not all timeouts can be set using this structure.
+            </remarks>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.DiscoveryParameters.LockDevice">
+            <summary>
+            Flag for locking the device.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.DiscoveryParameters.LockTimeout">
+            <summary>
+            Maximum waiting time for the lock to be freed.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.DiscoveryParameters.IoTimeout">
+            <summary>
+            TODO: Write the comment!
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.DiscoveryParameters.RetryTimeout">
+            <summary>
+            Interval after the network discovery command will be repeated.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.DiscoveryParameters.CommunicationTimeout">
+            <summary>
+            Interval that network discovery will take. Any devices doesn't respond in this interval won't be found.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.DiscoveryParameters.Mode">
+            <summary>
+            TODO: Write the comment!
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Vxi11.DiscoveryParameters.#ctor(System.Boolean,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Default structure constructor.
+            </summary>
+            <param name="lockDevice">Flag for locking the device.</param>
+            <param name="lockTimeout">Maximum waiting time for the lock to be freed.</param>
+            <param name="ioTimeout"></param>
+            <param name="retryTimeout">Interval after the network discovery command will be repeated.</param>
+            <param name="communicationTimeout">Interval that network discovery will take. Any devices doesn't respond in this interval won't be found.</param>
+            <param name="mode"></param>
+        </member>
+        <member name="T:Pickering.Lxi.Vxi11.InternalDeviceInfo">
+            <summary>
+            Internal structure for communicating with C++ DLL to receive information about found devices.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.InternalDeviceInfo.Host">
+            <summary>
+            String of legth 255 which contains hostname of foud device (often IP address).
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.InternalDeviceInfo.Name">
+            <summary>
+            String of legth 10 which contains name of device in instrument (inst0, inst1 etc.).
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.InternalDeviceInfo.Description">
+            <summary>
+            String of legth 1024 which contains description of device returned by using "IDN" command.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Vxi11.PiVxi11Wrapper.DiscoveryGetData(System.Int32,Pickering.Lxi.Vxi11.InternalDeviceInfo@,System.Int32,System.Int32@,System.Int32)">
+            <summary>
+            Receive information about device by index. Before using this function pivxi11_DiscoveryNetwork must be called.
+            Note: "response" parameter is allocated by user of this function and has to be freed by user as well.
+            </summary>
+            <param name = "index" > Index of LXI info.</param>
+            <param name = "response" > User allocated array of responses to fill in.</param>
+            <param name = "response" > User allocated array of responses to fill in.</param>
+            <param name = "responseArrayLength" > Size of "response" array.E.g.maximum of possible responses.</param>
+            <param name = "responseArrayFilled" > Pointer to a variable to receive number of instruments written to response array.</param>
+            <returns>Zero for success, or non-zero error code.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Vxi11.PiVxi11Wrapper.DiscoveryInstrument(System.String,Pickering.Lxi.Vxi11.DiscoveryParameters,Pickering.Lxi.Vxi11.InternalDeviceInfo@,System.Int32,System.Int32@)">
+            <summary>
+            Send a direct inquiry to a device for getting information.If device is available, there will be vxi11 response
+            from it in "response" parameter.RetryTimeout and CommunicationTimeout fields of params parameter are ignored
+            in this function.Note: "response" parameter is allocated by user of this function and has to be freed by user as well.
+            </summary>
+            <param name = "hostname" > IP address or name of remote LXI.</param>
+            <param name = "params" > Input parameters for discovery command including timeouts etc.</param>
+            <param name = "response" > User allocated array of responses to fill in.</param>
+            <param name = "responseArrayLength" > Size of "response" array.E.g.maximum of possible responses.</param>
+            <param name = "responseArrayFilled" > Pointer to a variable to receive number of devices written to response array.</param>
+            <returns>Zero for success, or non-zero error code.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Vxi11.PiVxi11Wrapper.DiscoveryNetwork(System.String,Pickering.Lxi.Vxi11.DiscoveryParameters,System.Int32@)">
+            <summary>
+            Send a broadcast message to all LXI in current subnet.For getting information about available LXIs you must
+            use functions pivxi11_DiscoveryGetCount and pivxi11_DiscoveryGetData. Whole discovery process will take
+            CommunicationTimeout miliseconds.If RetryTimeout is set lower than CommunicationTimeout, request to devices
+            on local network will be sent multiple times.CommunicationTimeout and RetryTimeout are fields of params parameter.
+            </summary>
+            <param name = "broadcastAddr" > Explicit broadcast address. For NULL is used implicit 255.255.255.255 broadcast address.</param>
+            <param name = "params" > Input parameters for discovery command including timeouts etc.</param>
+            <param name = "foundInstruments" > Pointer to a variable to receive a count of found instruments.</param>
+            <returns>Zero for success, or non-zero error code.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Vxi11.PiVxi11Wrapper.FreeLibrary(System.IntPtr)">
+            <summary>
+            Frees the loaded dynamic-link library (DLL) module and, if necessary, decrements its reference count.
+            When the reference count reaches zero, the module is unloaded from the address space of the calling
+            process and the handle is no longer valid.
+            </summary>
+            <param name="hModule">A handle to the loaded library module.</param>
+            <returns>
+            If the function succeeds, the return value is true. If the function fails, the return value is false.
+            </returns>
+        </member>
+        <member name="M:Pickering.Lxi.Vxi11.PiVxi11Wrapper.GetLastError(System.Int32@,System.Text.StringBuilder,System.Int32)">
+            <summary>
+            Receive last error code and message.
+            </summary>
+            <param name = "code" > Pointer to variable to receive an error code.</param>
+            <param name = "message" > String buffer allocated by user to receive error message.</param>
+            <param name = "messageBufLength" > Length of "message" buffer.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Vxi11.PiVxi11Wrapper.GetProcAddress(System.IntPtr,System.String)">
+            <summary>
+            Retrieves the address of an exported function or variable from the specified dynamic-link library (DLL).
+            </summary>
+            <param name="hModule">A handle to the DLL module that contains the function or variable.</param>
+            <param name="procName">The function or variable name.</param>
+            <returns>
+            If the function succeeds, the return value is the address of the exported function or variable.
+            If the function fails, the return value is IntPtr.Zero.
+            </returns>
+        </member>
+        <member name="M:Pickering.Lxi.Vxi11.PiVxi11Wrapper.LoadLibrary(System.String)">
+            <summary>
+            Loads the specified module into the address space of the calling process. The specified module may
+            cause other modules to be loaded.
+            </summary>
+            <param name="libName">
+            The name of the module. This can be either a library module (a .dll file) or an executable module (an .exe file).
+            The name specified is the file name of the module and is not related to the name stored in the library module
+            itself, as specified by the LIBRARY keyword in the module-definition (.def) file.
+            </param>
+            <returns>
+            If the function succeeds, the return value is a handle to the module.
+            If the function fails, the return value is IntPtr.Zero.
+            </returns>
+        </member>
+        <member name="T:Pickering.Lxi.Vxi11.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Vxi11.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Vxi11.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Vxi11.Properties.Resources.pivxi11_32">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Vxi11.Properties.Resources.pivxi11_64">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Vxi11.Vxi11Discovery.Vxi11NetworkDiscovery(System.String,Pickering.Lxi.Vxi11.DiscoveryParameters)">
+            <summary>
+            Discovers the network for devices with running VXI11 service.
+            </summary>
+            <param name="broadcastAddress">Network interface broadcast IPv4 address.</param>
+            <param name="discoveryParams">Discovery parameters.</param>
+            <returns>Returns list of discovered devices (IPv4 addresses).</returns>
+        </member>
+        <member name="T:Pickering.Lxi.Vxi11.Vxi11ErrorCodes">
+            <summary>
+            Enumerator that contains all errors and their codes that can happen in this library.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiOk">
+            <summary>
+            No error.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiSynErr">
+            <summary>
+            Syntax error.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiNoAccess">
+            <summary>
+            Device not accessible.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiInvLink">
+            <summary>
+            Invalid link identifier.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiParamErr">
+            <summary>
+            Parameter error.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiNoChan">
+            <summary>
+            Channel not established.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiNotSupp">
+            <summary>
+            Operation not supported.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiNoRes">
+            <summary>
+            Out of resources.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiDevLock">
+            <summary>
+            Device locked by another link.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiNoLock">
+            <summary>
+            No lock held by this link.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiIOTimeout">
+            <summary>
+            I/O timeout.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiIOErr">
+            <summary>
+            I/O error.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiInvAddr">
+            <summary>
+            Invalid address.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiAbort">
+            <summary>
+            Abort.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.VxiChanExist">
+            <summary>
+            Channel already established.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Vxi11.Vxi11ErrorCodes.PIVxiRPCError">
+            <summary>
+            RPC command failed, see details in message.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Vxi11.Vxi11Exception">
+            <summary>
+            The root exception class for all exceptions throwed by Pickering.Lxi.Vxi11Discovery namespace. 
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Vxi11.Vxi11Exception.ErrorCode">
+            <summary>
+            The error code of the exception.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Vxi11.Vxi11Exception.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <b>Vxi11Exception</b> class for the specific error message with an error code.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+            <param name="message">The error message.</param>
+        </member>
+    </members>
+</doc>

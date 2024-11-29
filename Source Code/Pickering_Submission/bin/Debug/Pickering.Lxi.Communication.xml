@@ -1,0 +1,3061 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pickering.Lxi.Communication</name>
+    </assembly>
+    <members>
+        <member name="T:Pickering.Lxi.Communication.AccessType">
+            <summary>
+            A fundamental set of card access types.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.AccessType.MultiUserAccess">
+            <summary>
+            A card will be used in multi-user access so everybody can work with the card.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.AccessType.ExclusiveAccess">
+            <summary>
+            A card will be used in exclusively access only when no one is just using the card.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.AccessType.ForceExclusiveAccess">
+            <summary>
+            A card will be used in exclusively access when no one is just using the card exclusively.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.CardOwnerType">
+            <summary>
+            A fundamental set of card types.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.CardOwnerType.ClientSession">
+            <summary>
+            Only client's session owns a card.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.CardOwnerType.ClientSharedSessions">
+            <summary>
+            Client shared sessions own a card and so no just client's session is owner the card.
+            </summary>        
+        </member>
+        <member name="F:Pickering.Lxi.Communication.CardOwnerType.OtherSessions">
+            <summary>
+            Others sessions owns a card (no shared as well).
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.CardType">
+            <summary>
+            A fundamental set of card types.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.CardType.StandardCard">
+            <summary>
+            Standard cards are Switch, Power Supply, Battery Simulator, 
+            Digital I/O, Attenuator and Resistor.
+            </summary>
+            <remarks>Please use PiplxCard value.</remarks>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.CardType.PiplxCard">
+            <summary>
+            Piplx cards are Switch, Power Supply, Battery Simulator, 
+            Digital I/O, Attenuator and Resistor.
+            </summary>        
+        </member>
+        <member name="F:Pickering.Lxi.Communication.CardType.PowerSequencer">
+            <summary>
+            The Power Sequencer card.
+            </summary>        
+        </member>
+        <member name="F:Pickering.Lxi.Communication.CardType.Psu743">
+            <summary>
+            Pickering 743 Power Supplay card.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.CardType.pi620">
+            <summary>
+            Pickering 743 Power Supplay card.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.CardType.Pxm78xx">
+            <summary>
+            VX Instrument's PXM78xx DMM family card.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.CardType.Px773x">
+            <summary>
+            VX Instrument's PX773x SMU family card.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.CardType.Pxa72xx">
+            <summary>
+            VX Intrument's PXA72xx family cards (Arbitrary Waveform Generator).
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.ClientBridgeException">
+            <summary>
+            The main exception class for the Client Bridge communication problems.
+            </summary> 
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ClientBridgeException.#ctor">
+            <summary>
+            Initializes a new instance of the <b>ClientBridgeException</b> 
+            class.
+            </summary>        
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ClientBridgeException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <b>ClientBridgeException</b> 
+            class for the specific error message.
+            </summary>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ClientBridgeException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <b>ClientBridgeException</b> 
+            class for the specific error message with an inner exception.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="innerException">The innner exception object.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ClientBridgeException.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <b>ClientBridgeException</b> 
+            class for the specific error code.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ClientBridgeException.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <b>ClientBridgeException</b> 
+            class for the specific error message with an error code.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ClientBridgeException.#ctor(System.Int32,System.Exception)">
+            <summary>
+            Initializes a new instance of the <b>ClientBridgeException</b>
+            class for the specific error code with an inner exception.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+            <param name="innerException">The inner exception object.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ClientBridgeException.#ctor(System.Int32,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <b>ClientBridgeException</b> 
+            class for the specific error message with specific error code 
+            and an inner exception.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+            <param name="message">The error message.</param>
+            <param name="innerException">Inner exception object.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ClientBridgeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <b>ClientBridgeException</b> 
+            class for the specific serealization info and context.
+            </summary>
+            <remarks>Only for serialization purposes.</remarks>
+            <param name="info">A serialization info object.</param>
+            <param name="context">A serialization context object.</param>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.DeviceClient">
+            <summary>
+            Class represents a client which communicates with a LXI device.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceClient.Address">
+            <summary>
+            IP address of the client.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceClient.PresentCount">
+            <summary>
+            Contains information how many sessions from the client's address use
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.DeviceInfo">
+            <summary>
+            <b>DeviceInfo</b> class provides fundamental information about LXI 
+            device.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceInfo.#ctor">
+            <summary>
+            Initializes a new instance of the <b>DeviceInfo</b> class with 
+            default settings. 
+            </summary>
+            <remarks>Default settings describes PXI/PCI device.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceInfo.#ctor(System.String,Pickering.Lxi.Communication.LxiClass,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <b>DeviceInfo</b> class for 
+            specific values. 
+            </summary>
+            <param name="cardsCount">Number of cards which device uses.</param>
+            <param name="clients">Number of cliens which actually use the 
+            device; for PXI/PCI device value is 0.</param>
+            <param name="description">Description of the device.</param>
+            <param name="devClass">LXI class of the device; for PXI/PCI device
+            value is LxiClass.None.</param>
+            <param name="echoPort">Port of discovery service.</param>
+            <param name="firmwareVersion">Firmware version of the device; for 
+            PXI/PCI device it is empty string.</param>
+            <param name="host">Network address of the device.</param>
+            <param name="model">Model of the device; for PXI/PCI device it is 
+            empty string.</param>
+            <param name="name">Name of the device; for PXI/PCI device it is 
+            empty string.</param>
+            <param name="openedCardsCount">Actual number of opened cards of 
+            the LXI device; for PXI/PCI device value is 0.</param>
+            <param name="rpcPort">RPC port of communication; for PXI/PCI 
+            device value is 0.</param>
+            <param name="serialNumber">Serial number of the LXI device; for 
+            PXI/PCI device value is empty string. </param>
+            <param name="version">Version of the LXI device; for PXI/PCI 
+            device it is empty string.</param>
+            <exception cref="T:System.ArgumentOutOfRangeException">One or more integer 
+            argumets have not valid value (less then 0).</exception>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.EchoPort">
+            <summary>
+            Gets the discovery port of the device.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.RpcPort">
+            <summary>
+            Gets the number of port of RPC communication.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.Model">
+            <summary>
+            Gets the model number.
+            </summary>        
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.Name">
+            <summary>
+            Gets the name of the device.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.CardsCount">
+            <summary>
+            Gets the total number of cards in the device.
+            </summary>        
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.ClientsCount">
+            <summary>
+            Gets the actual count of clients which is connected to the device.
+            </summary>        
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.OpenedCardsCount">
+            <summary>
+            Gets the actual count of the opened cards of the device.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.Description">
+            <summary>
+            Gets the description of the device.
+            </summary>        
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.SerialNumber">
+            <summary>
+            Gets the serial number of the device.
+            </summary>        
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.Host">
+            <summary>
+            Gets the IP address of the device.
+            </summary>        
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.Firmware">
+            <summary>
+            Gets the firmware version.
+            </summary>        
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.LxiClass">
+            <summary>
+            Gets the LXI class or none (for PXI/PCI device).
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceInfo.Version">
+            <summary>
+            Gets version of the device.
+            </summary>               
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceInfo.IsLocalAddress">
+            <summary>
+            Finds out if the address is local or remote.
+            </summary>
+            <returns><b>true</b>if it is local address; otherwise 
+            <b>false</b>.</returns>        
+            <exception cref="T:System.ArgumentNullException"><i>address</i> is a null
+            reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error is encountered when 
+            resolving <i>address</i> (<i>hostname</i>).</exception>
+            <exception cref="T:System.ArgumentException"><i>address</i> 
+            (<i>hostname</i>) is an invalid IP address.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceInfo.IsPxiDevice">
+            <summary>
+            Tests if the information is about PXI/PCI device or LXI device.
+            </summary>
+            <returns>Returns <b>true</b> if the host address represents 
+            PXI/PCI device.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceInfo.Equals(System.Object)">
+            <summary>
+            Determines whether the specified <b>DeviceInfo</b> object is equal 
+            to the current <b>DeviceInfo</b> object. 
+            </summary>
+            <param name="obj">The <b>DeviceInfo</b> object to compare with the 
+            current <b>DeviceInfo</b> object. </param>
+            <returns><b>true</b> if the specified Object is equal to the
+            current Object; otherwise, <b>false</b>. </returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceInfo.GetHashCode">
+            <summary>
+            Serves as a hash function for a particular type. <b>GetHashCode</b> 
+            is suitable for use in hashing algorithms and data structures like
+            a hash table.
+            </summary>        
+            <returns>A hash code for the current <b>DeviceInfo</b> object. 
+            </returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceInfo.ToString">
+            <summary>
+            Returns a <b>String</b> that represents the current 
+            <b>DeviceInfo</b> object. 
+            </summary>
+            <returns>A <b>String</b> that represents the current 
+            <b>DeviceInfo</b> object. </returns>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.DeviceManager">
+            <summary>
+            The <b>DeviceManager</b> class represents connection to the device 
+            and support basic functions based on possibility of the device.
+            </summary>
+            <remarks>It is a main class of the Client Bridge's communication part 
+            and it is for all types of devices.</remarks>    
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.PXI_REG_EXPRESSION">
+            <summary>
+            Regular expression for detection valid PXI VISA resource string. 
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.LXI_REG_EXPRESSION">
+            <summary>
+            Regular expression for detection valid LXI VISA resource string. 
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.DEFAULT_ECHOPORT">
+            <summary>
+            Default value of ECHO port for UDP and TCP connection. 
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.DEFAULT_RPCPORT">
+            <summary>
+            Default value of RPC port for listening.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.session">
+            <summary>
+            Actual session of the connection to the LXI device. For the 
+            PXI is null. 
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.management">
+            <summary>
+            LXI device management
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.ls">
+            <summary>
+            LXI stream as a fundamental of the communication with LXI device.
+            For the PXI device is null.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.connectionTimeout">
+            <summary>
+             The timeout for connecting. It is not used for the PXI.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.readTimeout">
+            <summary>
+             The timeout for reading operation. It is not used for the PXI.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.writeTimeout">
+            <summary>
+            The timeout for write operation. It is not used for the PXI.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.echoPort">
+            <summary>
+            The port of Pickering discovery service which can offers close 
+            information about the LXI device.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.rpcPort">
+            <summary>
+            The port of Pickering RPC which is used for communication with 
+            the LXI device.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.isDevicePxi">
+            <summary>
+            Detects if there is a valid connection. True - it's PXI; 
+            False - it's LXI; Null (Nothing in VB) - it's not connected at all.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.discovery">
+            <summary>
+            Pickering discovery client.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.locked">
+            <summary>
+            It marks that Device manager has exclusive access to the LXI device.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.cardList">
+            <summary>
+            Internal card list.
+            </summary>
+            <remarks> It is for internal using only.</remarks>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.data">
+            <summary>
+            Contains information about connection.
+            </summary>
+            <remarks> It is for internal using only.</remarks>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.resource">
+            <summary>
+            Contains resource string.
+            </summary>
+            <remarks> It is for internal using only.</remarks>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.disposed">
+            <summary>
+            Track whether Dispose has been called.
+            </summary>
+            <remarks>It is for internal using only.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.OnLoadCardsException(System.Exception)">
+            <summary>
+            Log all exceptions during the initialization of a Device manager.
+            </summary>
+            <param name="exception">Object of an exception.</param>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.CardList">
+            <summary>
+            List of available cards.
+            </summary>
+            <remarks>It is for implementation purposes.</remarks>        
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.ConnectionLostDetectionPeriod">
+            <summary>
+            Connection lost detection period time in milliseconds. Default 2000ms.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.Data">
+            <summary>
+            Data which specifies how to set up connection.
+            </summary>
+            <remarks>It is for implementation purposes.</remarks>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.DeviceManager.EnableConnectionLostDetection">
+            <summary>
+            Enable connection lost detection on Connect. Disabled by default.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.IsConnected">
+            <summary>
+            Gets <b>true</b> if the instance of <b>DeviceManager</b> class 
+            is connected with device; otherwise <b>false</b>. If device is
+            LXI gets connection status.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.IsDisposed">
+            <summary>
+            Track whether Dispose has been called.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.LocalHostInfo">
+            <summary>
+            Local hosts information.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.GetRpcPortFromEchoPort">
+            <summary>
+            Obtains a RPC port from Echo port.
+            </summary>        
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Connect2Device(System.String)">
+            <summary>
+            Main logic of the connection to PXI/PCI or LXI device
+            </summary>
+            <param name="resource">An address of the device or VISA resource 
+            string.</param>             
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Connect2Lxi">
+            <summary>
+            Connects to the LXI device.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.#ctor">
+            <summary>
+            Initializes a new instance of the <b>DeviceManager</b> class. 
+            </summary>
+            <remarks>After initialization the new instance is not connected to
+            the device. Use one of Connect() method for establishing a 
+            connection between the <b>Device Manager</b> and a device. 
+            </remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Finalize">
+            <summary>
+            Destructor, closes streams.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <b>DeviceManager</b> class. 
+            </summary>
+            <param name="resource">A resource string. It can be VISA resource 
+            string or hostname.</param>
+            <remarks>After initialization the new instance is connected to the 
+            device. Empty string or null reference (<b>Nothing</b> in Visual 
+            Basic) means connection to the PXI/PCI system.</remarks>        
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still established 
+            connection to a device. Closes them first.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException">One or both
+            arguments which describe port have not valid value. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error 
+            occurred when accessing the socket.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.#ctor(System.String,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <b>DeviceManager</b> class. 
+            </summary>
+            <param name="resource">A resource string. It can be VISA resource 
+            string or hostname.</param>
+            <param name="connect">The <b>true</b> value means automatic 
+            connection to a device. The <b>false</b> value means that object 
+            of <b>Device Manager</b> is created but is not connected to a 
+            device.</param>
+            <remarks>Empty string or null reference (<b>Nothing</b> in Visual 
+            Basic) means connection to the PXI/PCI system.</remarks>        
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still established
+            connection to a device. Closes them first.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException">One or both 
+            arguments which describe port have not valid value. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error 
+            occurred when accessing the socket.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <b>DeviceManager</b> class. 
+            </summary>
+            <param name="resource">A resource string. It can be VISA resource 
+            string or hostname.</param>
+            <param name="echoPort">Port of Pickering discovery service.</param>
+            <remarks>After initialization the new instance is connected to the 
+            device. Empty string or null reference (<b>Nothing</b> in Visual 
+            Basic) means connection to the PXI/PCI system.</remarks>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still established
+            connection to a device. Closes them first.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException">One or both 
+            arguments which describe port have not valid value. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error
+            occurred when accessing the socket.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.#ctor(System.String,System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <b>DeviceManager</b> class. 
+            </summary>
+            <param name="resource">A resource string. It can be VISA resource 
+            string or hostname.</param>
+            <param name="echoPort">Port of Pickering discovery service.</param>
+            <param name="connect">The <b>true</b> value means automatic 
+            connection to a device. The <b>false</b> value means that object
+            of <b>Device Manager</b> is created but is not connected to a 
+            device.</param>
+            <remarks>Empty string or null reference (<b>Nothing</b> in Visual 
+            Basic) of <i>resource</i> means connection to the PXI/PCI system.
+            </remarks>        
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still 
+            established connection to a device. Closes them first.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException">One or both 
+            arguments which describe port have not valid value. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error 
+            occurred when accessing the socket.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>
+            Initializes a new instance of the <b>DeviceManager</b> class for
+            the specific network address of the device(<i>resource</i>), 
+            TCP/IP network communication port (<i>rpcPort</i>) and discovery 
+            service's port (<i>echoPort</i>)  and connects to a device. 
+            </summary>
+            <remarks>During the initialization of the new instance of 
+            <b>DeviceManager</b> class constructor tries to connect to the 
+            device.</remarks>
+            <remarks>For connection to the PXI/PCI device is important to 
+            set a network device name (<i>resource</i>) to null reference or 
+            to empty string. Rest of parameters doesn't have any sense. 
+            </remarks>
+            <param name="resource">An address of the device.</param>
+            <param name="rpcPort">A port of the communication.</param>
+            <param name="echoPort">A port of the discovery service.</param>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still established
+            connection to a device. Closes them first.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException">One or both 
+            arguments which describe port have not valid value. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error 
+            occurred when accessing the socket.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.#ctor(System.String,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <b>DeviceManager</b> class for
+            the specific network address of the device(<i>resource</i>), TCP/IP
+            network communication port (<i>rpcPort</i>) and discovery service's
+            port (<i>echoPort</i>)  and connects to a device. 
+            </summary>
+            <remarks>During the initialization of the new instance of 
+            <b>DeviceManager</b> class constructor tries to connect to the 
+            device if the <i>connect</i> is <b>true</b>.</remarks>
+            <remarks>For connection to the PXI/PCI device is important to set
+            a network device name (<i>resource</i>) to null reference or to 
+            empty string. </remarks>
+            <param name="resource">An address of the device.</param>
+            <param name="rpcPort">A port of the communication.</param>
+            <param name="echoPort">A port of the discovery service.</param>
+            <param name="connect">The <b>true</b> value means automatic 
+            connection to a device. The <b>false</b> value means that object
+            of <b>Device Manager</b> is created but is not connected to a 
+            device.</param>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still established
+            connection to a device. Closes them first.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException">One or both
+            arguments which describe port have not valid value. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error 
+            occurred when accessing the socket.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.#ctor(Pickering.Lxi.Communication.DeviceInfo)">
+            <summary>
+            Initializes a new instance of the <b>DeviceManager</b> class for 
+            the specific <b>DeviceInfo</b> object and connects to a device. 
+            </summary>
+            <param name="devInfo">Information about the device.</param>
+            <remarks>For connection to the PXI/PCI device is important to set
+            a network device name (<i>HostName</i>) to null reference or to 
+            empty string.</remarks>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still 
+            established connection to a device. Closes them first.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException">One or both
+            arguments which describe port have no valid value. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error
+            occurred when accessing the socket. </exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.#ctor(Pickering.Lxi.Communication.DeviceInfo,System.Boolean)">
+            <summary>
+            Initializes a new instance of the <b>DeviceManager</b> class for 
+            the specific <b>DeviceInfo</b> object. 
+            </summary>
+            <param name="devInfo">Information about the device.</param>
+            <param name="connect">The <b>true</b> value means automatic 
+            connection to a device. The <b>false</b> value means that object 
+            of <b>Device Manager</b> is created but is not connected to a 
+            device.</param>
+            <remarks>For connection to the PXI/PCI device is important to set 
+            a network device name (<i>HostName</i>) to null reference or to
+            empty string.</remarks>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still established
+            connection to a device. Closes them first.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException">One or both 
+            arguments which describe port have no valid value. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error 
+            occurred when accessing the socket. </exception>        
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.Information">
+            <summary>
+            Gets basic and actual information about the connected device.
+            </summary>
+            <remarks>For PXI/PCI devices are some properties empty or have
+            system's default value.</remarks>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.Connected">
+            <summary>
+            Gets <b>true</b> if the instance of <b>DeviceManager</b> class 
+            is connected with device; otherwise <b>false</b>. If device is
+            LXI gets connection status.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Connect">
+            <summary>
+            Connects <b>deviceManager</b> instance always to a PXI/PCI device.
+            </summary>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still established 
+            connection to a device. Closes them first.</exception>                        
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Connect(Pickering.Lxi.Communication.DeviceInfo)">
+            <summary>
+            Connects <b>DeviceManeger</b> instance to the LXI or PXI/PCI device
+            for specified DeviceInfo object.
+            </summary>
+            <remarks>For connection to the PXI/PCI device is important to set
+            a network device name (<i>HostName</i>) to null reference 
+            (<b>Nothing</b> in Visual Basic) or to empty string. </remarks>
+            <param name="devInfo"><i>devInfo</i> object describes the device.
+            </param>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still established
+            connection to a device. Closes them first.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException">One or both 
+            arguments which describe port have no valid value. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error 
+            occurred when accessing the socket.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Connect(System.String)">
+            <summary>
+            Connects <b>DeviceManager</b> instance to the LXI or PXI/PCI 
+            device.
+            </summary>
+            <remarks>For connection to the PXI/PCI device is important to set 
+            a network device name (<i>resource</i>) to null reference or to
+            empty string. Rest of parameters doesn't have any sense. </remarks>
+            <param name="resource">An address of the device.</param>        
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still established
+            connection to a device. Closes them first.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException">One or both 
+            arguments which describe port have not valid value. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error 
+            occurred when accessing the socket.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Connect(System.String,System.Int32)">
+            <summary>
+            Connects <b>DeviceManager</b> instance to the LXI or PXI/PCI 
+            device.
+            </summary>
+            <remarks>For connection to the PXI/PCI device is important to set 
+            a network device name (<i>resource</i>) to null reference or to
+            empty string. Rest of parameters doesn't have any sense. </remarks>
+            <param name="resource">An address of the device.</param>
+            <param name="echoPort">A port of the discovery service.</param>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still established
+            connection to a device. Closes them first.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException">One or both 
+            arguments which describe port have not valid value. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error 
+            occurred when accessing the socket.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Connect(System.String,System.Int32,System.Int32)">
+            <summary>
+            Connects <b>DeviceManager</b> instance to the LXI or PXI/PCI
+            device.
+            </summary>
+            <remarks>For connection to the PXI/PCI device is important to set
+            a network device name (<i>resource</i>) to null reference or to 
+            empty string. Rest of parameters doesn't have any sense. </remarks>
+            <param name="resource">An address of the device.</param>
+            <param name="echoPort">A port of the discovery service.</param>
+            <param name="rpcPort">A port of the communication.</param>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"> There is still established 
+            connection to a device. Closes them first.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException">One or both 
+            arguments which describe port have not valid value. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error
+            occurred when accessing the socket.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Disconnect">
+            <summary>
+            Disconnects from LXI or PXI/PCI device.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.ServerBridgeVersion">
+            <summary>
+            Gets a version of the Server Bridge.
+            </summary>
+            <remarks>This property is not supported for PXI/PCI devices. In 
+            this case it always return null reference (<b>Nothing</b> in 
+            Visual Basic).</remarks> 
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.GetCountCardType(Pickering.Lxi.Communication.CardType)">
+            <summary>
+            Returns number of cards used by the device based on type of cards.
+            </summary>
+            <param name="cardType">A card type.</param>
+            <returns>Number of cards.</returns>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException">The ServerBridge send 
+            invalid messages (old type of the Server Bridge) 
+            <para>-or-</para> 
+            <para>Connected device is PXI/PCI</para>
+            <para>-or-</para>
+            <para><b>DeviceManager</b> is disconnected.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">There was a failure while writing 
+            to the network. <para>-or-</para> <para>An error occurred when 
+            accessing the socket.</para></exception>
+            <exception cref="T:System.ObjectDisposedException">The <b>LxiStream</b>
+            is closed. <para>-or-</para><para>There was a failure reading
+            from the network.</para></exception>
+            <exception cref="T:Pickering.Lxi.Communication.ServerBridgeException">The Server Bridge 
+            couldn't process the message (command), see 
+            <see cref="T:Pickering.Lxi.ServerBridgeErrorCode"/></exception>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.ReadTimeout">
+            <summary>
+            Gets or sets timeout for reading message from communication 
+            channel.
+            </summary>
+            <remarks>Some versions of Windows CE don't need support this
+            feature. PXI/PCI device doesn't use this feature as well.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"><i>value</i> 
+            must be greater then 0.</exception>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.ConnectionTimeout">
+            <summary>
+            Gets or sets timeout for connecting a communication channel.
+            </summary>
+            <remarks>Some versions of Windows CE don't need support this
+            feature. PXI/PCI device doesn't use this feature as well.
+            </remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"><i>value</i> 
+            must be greater then 0.</exception>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.WriteTimeout">
+            <summary>
+            Gets or sets timeout for writing message to communication channel.
+            </summary>
+            <remarks>Some versions of Windows CE don't need support this 
+            feature. PXI/PCI device doesn't use this feature as well.</remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException"><i>value</i> must 
+            be greater then 0.</exception>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.Stream">
+            <summary>
+            Gets LXI communication stream.
+            </summary>
+            <remarks> It is only for internal using.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.IsPxiDevice">
+            <summary>
+            Tests if the connected device is PXI/PCI.
+            </summary>
+            <returns> <b>true</b> if device is PXI/PCI; otherwise 
+            <b>false</b>.</returns>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException">The <b>DeviceManager</b>
+            is disconnected.</exception>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.Cards">
+            <summary>
+            Gets all cards connected to the LXI device.
+            </summary>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException">The <b>DeviceManager</b>
+            is disconnected.</exception>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.OpenedCards">
+            <summary>
+            Gets only opened card in this time.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.Item(System.Int32)">
+            <summary>
+            Gets a card based on index of the card.
+            </summary>
+            <remarks>This return always null for communication part of 
+            the Client Bridge.</remarks>        
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.CommunicationFilter">
+            <summary>
+            Gets a communication filter.
+            </summary>
+            <remarks>Don't use this property, because you can damage a 
+            communication channel - it is only for advanced developers.
+            </remarks>
+            <remarks>This property is not supported for PXI/PCI devices.
+            </remarks>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.CardsCount">
+            <summary>
+            Gets number of cards used by the device.
+            </summary>
+            <remarks>It returns number of all types of cards in the 
+            device.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.OnDeserialization(System.Object)">
+            <summary>
+            It is called in de-serialization process for <b>DeviceManager</b>.
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <remarks> The de-serialization process wants to restore the lock 
+            state. For Lock operation waits 10s. </remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Dispose">
+            <summary>
+            Disposes connection of the <b>DeviceManager</b>.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Dispose(System.Boolean)">
+            <summary>
+            Disposes managed and unmanaged resources.
+            </summary>
+            <param name="disposing"> 'True' for managed/unmanaged resources, 
+            'false' when method is called from runtime.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Lock(System.Int32)">
+            <summary>
+            Locks a LXI device for exclusive access.
+            </summary>
+            <remarks>It is for LXI devices only.</remarks>
+            <remarks> The <i>timeout</i> is in milliseconds.</remarks>
+            <param name="timeout">Waits timeout for getting the exclusive 
+            access.</param>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException">The ServerBridge send 
+            invalid messages (old type of the Server Bridge) 
+            <para>-or-</para> 
+            <para>Connected device is PXI/PCI</para>
+            <para>-or-</para>
+            <para><b>DeviceManager</b> is disconnected.</para>
+            </exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.Unlock">
+            <summary>
+            Unlocks a LXI device.
+            </summary>
+            <remarks>It is for LXI devices only.</remarks>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException">The ServerBridge send 
+            invalid messages (old type of the Server Bridge) 
+            <para>-or-</para> 
+            <para>Connected device is PXI/PCI</para>
+            <para>-or-</para>
+            <para><b>DeviceManager</b> is disconnected.</para>
+            </exception>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.HasLock">
+            <summary>
+            Tests if the <b>DeviceManager</b> has a lock for exclusive access.
+            </summary>
+            <remarks>It is for LXI devices only. </remarks>
+            <returns><b>true</b> if <b>DeviceManager</b> has exclusive
+            access to the device; otherwise <b>false</b> - this is valid
+            for PXI/PCI device as well.</returns>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.DeviceManager.LxiManagement">
+            <summary>
+            Server Bridge functionality for low level access.
+            </summary>
+            <returns>Returns <b>LxiManagement</b> object.</returns>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException">The exception is generated when connection is PXI/PCI.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.DeviceManager.ToString">
+            <summary>
+            Returns a String that represents the current Object. 
+            </summary>
+            <returns>A String that represents the current Object.</returns>
+        </member>
+        <member name="E:Pickering.Lxi.Communication.DeviceManager.ConnectionLost">
+            <summary>
+            Occurs when connection was lost. Happen when remote host is suddenly turned OFF or cable is unplugged.
+            </summary>
+        </member>
+        <member name="E:Pickering.Lxi.Communication.DeviceManager.Disconnected">
+            <summary>
+            Occurs when Disconnect function is called.
+            </summary>
+        </member>
+        <member name="E:Pickering.Lxi.Communication.DeviceManager.LoadCardsException">
+            <summary>
+            Catch all exceptions which are generated in initialization section of a DeviceManager.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.ExceptionEventArgs">
+            <summary>
+            Specialized argument class for logging of initialization exceptions.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.ExceptionEventArgs.iException">
+            <summary>
+            Exception object.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ExceptionEventArgs.#ctor(System.Exception)">
+            <summary>
+            Creates object of logged exception.
+            </summary>
+            <param name="ex">The exception.</param>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.ExceptionEventArgs.Exception">
+            <summary>
+            Described exception.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.Filters.IBytesFilter">
+            <summary>
+            The fundamental interface for a filter which works with messages on 
+            bytes level.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.IBytesFilter.ReadResponse">
+            <summary>
+            Reads response from a previous filter, makes some actions (for 
+            example if it is first filter then usually reads from source).
+            </summary>
+            <returns>A message which is represented as an array of bytes.
+            </returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.IBytesFilter.ReadResponseEx">
+            <summary>
+            Reads response from a previous filter, makes some actions (for 
+            example if it is first filter then usually reads from source).
+            </summary>
+            <returns>A message which is represented as an array of bytes.
+            </returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.IBytesFilter.WriteMessage(System.Byte[])">
+            <summary>
+            Writes a message to the filter.
+            </summary>
+            <param name="message"> The message is represented as an array of 
+            bytes.</param>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.Filters.IFilter">
+            <summary>
+            The fundamental interface for all type of filters.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Filters.IFilter.NextFilter">
+            <summary>
+            Gets or sets a next filter in a queue of filters.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Filters.IFilter.PreviousFilter">
+            <summary>
+            Gets or sets a previous filter in a queue of filters.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.Filters.ILogCommandMessages">
+            <summary>
+            Interfaces provides support for logging messages.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.ILogCommandMessages.Close">
+            <summary>
+            Flushes and closes the output stream.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Filters.ILogCommandMessages.Output">
+            <summary>
+            Gets or sets an output stream which is used for logging.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.Filters.IObjectsFilter">
+            <summary>
+            The fundamental interface for a filter which works with objects.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.IObjectsFilter.ReadResponse(System.Type[])">
+            <summary>
+            Reads response from previous filter, makes some action (for example
+            if it is first filter then usually reads from source).
+            </summary>
+            <param name="types">The array of types which are expected and which
+            are extracted from the source.</param>
+            <returns>Received message.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.IObjectsFilter.WriteMessage(System.Object[])">
+            <summary>
+            Writes a message to the filter.
+            </summary>
+            <param name="msg">The message is as an array of objects.</param>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.Filters.LogCommandMessages">
+            <summary>
+            Provides basic logging mechanism (Output to file).
+            </summary>
+            <remarks>For LXI only.</remarks>   
+        </member>
+        <member name="F:Pickering.Lxi.Communication.Filters.LogCommandMessages.DefaultLogFile">
+            <summary>
+            Default logs file name.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Filters.LogCommandMessages.Output">
+            <summary>
+            Sets or gets the output stream.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LogCommandMessages.Close">
+            <summary>
+            Closes opened <b>StreamWriter</b>
+            </summary>
+            <exception cref="T:System.IO.IOException">An I/O error occurs.</exception>
+            <exception cref="T:System.ObjectDisposedException">The StreamWriter is 
+            closed.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LogCommandMessages.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LogCommandMessages.Dispose(System.Boolean)">
+            <summary>
+            In the overload, the disposing parameter is a Boolean that indicates whether the method
+            call comes from a <see cref="M:Pickering.Lxi.Communication.Filters.LogCommandMessages.Dispose"/> method (its value is true) or from a finalizer (its value is false).
+            </summary>
+            <param name="disposing">
+            Indicates whether the method call comes from a <see cref="M:Pickering.Lxi.Communication.Filters.LogCommandMessages.Dispose"/> method or from finalizer.
+            </param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LogCommandMessages.WriteMessage(System.Byte[])">
+            <summary>
+            Writes a message to the filter.
+            </summary>
+            <remarks>Any exception can be thrown from other filters.</remarks>
+            <param name="message"> The message is represented as an array of bytes.
+            </param>
+            <exception cref="T:System.ArgumentNullException"><i>message</i> is a null 
+            reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.IO.IOException">An I/O error occurs.</exception>
+            <exception cref="T:System.ObjectDisposedException">The StreamWriter is 
+            closed.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LogCommandMessages.ReadResponse">
+            <summary>
+            Reads response from previous filter, makes some action (for example
+            if it is first filter then usually reads from source).
+            </summary>
+            <remarks>Any exception can be thrown from other filters.</remarks>
+            <returns>A message which is represented as an array of bytes.
+            </returns>
+            <exception cref="T:System.IO.IOException">An I/O error occurs.</exception>
+            <exception cref="T:System.ObjectDisposedException">The StreamWriter is 
+            closed.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LogCommandMessages.ReadResponseEx">
+            <summary>
+            Reads response from previous filter, makes some action (for example
+            if it is first filter then usually reads from source).
+            </summary>
+            <remarks>Any exception can be thrown from other filters.</remarks>
+            <returns>A message which is represented as an array of bytes.
+            </returns>
+            <exception cref="T:System.IO.IOException">An I/O error occurs.</exception>
+            <exception cref="T:System.ObjectDisposedException">The StreamWriter is 
+            closed.</exception>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Filters.LogCommandMessages.NextFilter">
+            <summary>
+            Gets or sets a next filter in the queue of filters.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"><i>value</i> is a null
+            reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.InvalidCastException"><i>value</i> must be type
+            of IBytesFilter.</exception>        
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Filters.LogCommandMessages.PreviousFilter">
+            <summary>
+            Gets or sets a previous filter in the queue of filters.        
+            </summary>
+            <exception cref="T:System.ArgumentNullException"><i>value</i> is a null
+            reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.InvalidCastException"><i>value</i> must be type 
+            of IObjectsFilter.</exception>        
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LogCommandMessages.#ctor">
+            <summary>
+            Initializes a new instance of the <b>LogCommandMessages</b> class.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LogCommandMessages.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Pickering.Lxi.Communication.Filters.LogCommandMessages"/> class
+            with logging into the specified <b>logFileName</b>.
+            </summary>
+            <param name="logFileName">Log file name. Default value is <see cref="F:Pickering.Lxi.Communication.Filters.LogCommandMessages.DefaultLogFile"/>.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LogCommandMessages.#ctor(System.IO.TextWriter)">
+             <summary>
+             Initializes a new instance of the <see cref="T:Pickering.Lxi.Communication.Filters.LogCommandMessages"/> class 
+             for specific <see cref="T:System.IO.StreamWriter"/> object.
+             </summary>
+             <param name="output">The opened output stream.</param>
+             <exception cref="T:System.ArgumentNullException"><i>output</i> is null.
+             </exception>
+             <exception cref="T:System.IO.IOException">An I/O error occurs.</exception>
+             <exception cref="T:System.ObjectDisposedException">The <i>output</i> is 
+             closed.</exception>
+             <example>
+             <code>
+             ...
+             
+             // creates a device manager
+             DeviceManager dm = new DeviceManager(host, 1024, 9999);
+            
+             //creates new instance of output stream
+             StreamWriter sw = new StreamWriter("ExampleOfLog.Output",false);
+             
+             // creates a new instance of logCommandMessages filter
+             LogCommandMessages filter = new LogCommandMessages(sw);
+             
+             // gets a TransferFilter
+             IFilter tf = dm.CommunicationFilter.PreviousFilter;
+            
+             // add a Output filter between the TransferFilter and the 
+             communication filter
+             filter.NextFilter = tf.NextFilter;
+             tf.NextFilter = filter;
+             filter.PreviousFilter = tf;
+             
+             // do a command. This command will have a record in a file
+             string version = dm.ServerBridgeVersion;
+             
+             // closes the file
+             filter.Close();
+             
+             ...
+             </code>
+             </example>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.Filters.LxiStream">
+            <summary>
+            The fundamental communication class for sending commands to the 
+            LXI device.
+            </summary>
+            <remarks>Please don't use this class directly. It is primarily for 
+            implementation needs and it is only designed for LXI devices.</remarks>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.Filters.LxiStream.MessageLength">
+            <summary>
+            Total count of bytes of an allocation unit.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.Filters.LxiStream.ErrorBoundary">
+            <summary>
+            High boundary of card's error message.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LxiStream.#ctor(System.Net.Sockets.Socket,Pickering.Lxi.Communication.DeviceManager)">
+            <summary>
+            Initializes a new instance of the <b>LxiStream</b> class for the 
+            specific <b>Socket</b> connection.
+            </summary>
+            <remarks>The constructor creates instance of <b>TransferFilter</b> 
+            for translating object messages to byte messages and back as well.
+            </remarks>
+            <param name="socket">The socket for the communication.</param>        
+            <param name="manager">The device manager.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LxiStream.#ctor(System.Net.Sockets.Socket,System.Boolean,Pickering.Lxi.Communication.DeviceManager)">
+            <summary>
+            Initializes a new instance of the <b>LxiStream</b> class for the 
+            specific <b>Socket</b> connection with specified <b>Socket</b> 
+            ownership.
+            </summary>
+            <remarks>The constructor creates instance of <b>TransferFilter</b>
+            for translating object messages to byte messages and back as well.
+            </remarks>
+            <param name="socket">Socket of the communication.</param>
+            <param name="ownsSocket">Owns socket or no.</param>
+            <param name="manager">The device manager.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LxiStream.#ctor(System.Net.Sockets.Socket,System.IO.FileAccess,Pickering.Lxi.Communication.DeviceManager)">
+            <summary>
+            Creates a new instance of the <b>LxiStream</b> class for the 
+            specified <b>Socket</b> with the specified access rights.
+            </summary>
+            <remarks>The constructor creates instance of <b>TransferFilter</b> 
+            for translating object messages to byte messages and back as well.
+            </remarks>
+            <param name="socket">Socket of the communication.</param>
+            <param name="access">Type of access.</param>
+            <param name="manager">The device manager.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LxiStream.#ctor(System.Net.Sockets.Socket,System.IO.FileAccess,System.Boolean,Pickering.Lxi.Communication.DeviceManager)">
+            <summary>
+            Creates a new instance of the <b>LxiStream</b> class for the 
+            specified <b>Socket</b> with the specified access rights and the 
+            specified <b>Socket</b> ownership.
+            </summary>
+            <remarks>The constructor creates instance of <b>TransferFilter</b> 
+            for translating object messages to byte messages and back as well.
+            </remarks>
+            <param name="socket">The Socket that the LxiStream will use to 
+            send and receive data. </param>
+            <param name="access">A bitwise combination of the FileAccess 
+            values that specifies the type of access given to the 
+            <b>LxiStream</b> over the provided <b>Socket</b>. </param>
+            <param name="ownsSocket"><b>true</b> to indicate that the 
+            <b>LxiStream</b> will take ownership of the <b>Socket</b>; 
+            otherwise, <b>false</b>.</param>
+            <param name="manager">The device manager.</param>
+            <exception cref="T:System.ArgumentNullException"><i>socket</i> is a null 
+            reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.IO.IOException"><i>socket</i> is not connected. 
+            <para>-or- </para> <para>The SocketType property of <i>socket</i> 
+            is not SocketType.Stream.</para> <para>-or-</para> 
+            <para><i>socket</i>  is in a nonblocking state.</para> </exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LxiStream.SendMessage(System.Object[])">
+            <summary>
+            Sends a command to the LXI device.
+            </summary>
+            <remarks>This method is only for using together with LXI devices.
+            </remarks>
+            <param name="commandSignature">The message (command) in the object
+            form.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LxiStream.ReceiveMessage(System.Type[])">
+            <summary>
+            Receives a response from sended command.
+            </summary>
+            <remarks>This method is only for using together with LXI devices.
+            </remarks>
+            <param name="types">The array of types which are expected and 
+            which are exctrated from the source. </param>
+            <returns>Received message.</returns>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Filters.LxiStream.NextFilter">
+            <summary>
+            Gets or sets a next filter in the queue of filters.
+            </summary>
+            <remarks>It is always null, because it is main communication 
+            filter and there is not possibility to add filter behind this 
+            filter.</remarks>
+            <exception cref="T:System.ArgumentNullException"><i>value</i> is a null 
+            reference (<b>Nothing</b> in Visual Basic).</exception>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Filters.LxiStream.PreviousFilter">
+            <summary>
+            Gets or sets a previous filter in the queue of filters.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LxiStream.WriteMessage(System.Byte[])">
+            <summary>
+            Writes the message to the filter.
+            </summary>
+            <param name="msg"> The message is represented as an array of 
+            bytes.</param>
+            <exception cref="T:System.ArgumentNullException"><i>msg</i> is a null 
+            reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.IO.IOException">There was a failure while writing 
+            to the network. <para>-or-</para> <para>An error occurred when 
+            accessing the socket.</para></exception>
+            <exception cref="T:System.ObjectDisposedException">The <b>LxiStream</b> is
+            closed. <para>-or-</para><para>There was a failure reading from the 
+            network.</para></exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LxiStream.ReadResponse">
+            <summary>
+            Reads response from previous filter, makes some action (for example
+            if it is first filter then usually reads from source).
+            </summary>
+            <returns>A message which is represented as an array of bytes.
+            </returns>
+            <exception cref="T:System.IO.IOException">There was a failure while writing to 
+            the network. <para>-or-</para> <para>An error occurred when 
+            accessing the socket.</para></exception>
+            <exception cref="T:System.ObjectDisposedException">The <b>LxiStream</b> is 
+            closed. <para>-or-</para><para>There was a failure reading from 
+            the network.</para></exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.LxiStream.ReadResponseEx">
+            <summary>
+            Reads response from previous filter, makes some action (for example
+            if it is first filter then usually reads from source).
+            </summary>
+            <returns>A message which is represented as an array of bytes.</returns>
+            <exception cref="T:Pickering.Lxi.Communication.ServerBridgeException">The Server Bridge sends a 
+            error and couldn't process the command.</exception>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"><i>types</i> contains type 
+            which is not supported type. <para>-or-</para><para>communication 
+            channel received invalid message.</para></exception>
+            <exception cref="T:System.IO.IOException">There was a failure while writing to 
+            the network. <para>-or-</para> <para>An error occurred when 
+            accessing the socket.</para></exception>
+            <exception cref="T:System.ObjectDisposedException">The <b>LxiStream</b> is 
+            closed. <para>-or-</para><para>There was a failure reading from 
+            the network.</para></exception>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.Filters.TransferFilter">
+            <summary><b>TransferFilter</b> translates messages from byte form to 
+             object form and back.</summary>
+             <remarks>For LXI only.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.TransferFilter.WriteMessage(System.Object[])">
+            <summary>
+            Writes a message to the filter.
+            </summary>
+            <remarks>There can be throwed exceptions from previous filters 
+            as well.</remarks>
+            <param name="msg">The message is as an array of objects.</param>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"><i>msg</i> contains object
+            with unsupported type.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.Filters.TransferFilter.ReadResponse(System.Type[])">
+            <summary>
+            Reads response from previous filter, makes some transfer (for 
+            example if it is first filter then usually reads from source).
+            </summary>
+            <param name="types">The array of types which are expected and which
+            are extracted from the source.</param>
+            <returns>Received message.</returns>
+            <exception cref="T:Pickering.Lxi.Communication.ServerBridgeException">The Server Bridge sends a 
+            error and couldn't process the command.</exception>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException"><i>types</i> contains type 
+            which is not supported type. <para>-or-</para><para>communication 
+            channel received invalid message.</para></exception>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Filters.TransferFilter.NextFilter">
+            <summary>
+            Gets or sets a next filter in the queue of filters.
+            </summary>
+            <exception cref="T:System.ArgumentNullException"><i>value</i> is a null 
+            reference (Nothing in Visual Basic). </exception>
+            <exception cref="T:System.InvalidCastException"><i>value</i> must be type 
+            of IBytesFilter.</exception>        
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Filters.TransferFilter.PreviousFilter">
+            <summary>
+            Gets or sets a previous filter in the queue of filters.
+            </summary>
+            <exception cref="T:System.InvalidCastException"><i>value</i> must be
+            type of IObjectsFilter.</exception>        
+        </member>
+        <member name="T:Pickering.Lxi.Communication.IDeviceManager">
+            <summary>
+            A rooot interface for <b>Device Manager</b> class.
+            </summary>    
+        </member>
+        <member name="P:Pickering.Lxi.Communication.IDeviceManager.Cards">
+            <summary>
+            Gets all cards connected to the LXI device.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.IDeviceManager.OpenedCards">
+            <summary>
+            Gets only opened card for exclusive access.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.IDeviceManager.Connect(System.String,System.Int32,System.Int32)">
+            <summary>
+            Connects <b>DeviceManager</b> instance to the LXI or PXI/PCI 
+            device.
+            </summary>
+            <remarks>For connection to the PXI/PCI device is important to set
+            a network device name (<i>resource</i>) to null reference or to 
+            empty string. Rest of parameters doesn't have any sense. 
+            </remarks>
+            <param name="resource">An address of the device.</param>
+            <param name="echoPort">A port of the discovery service.</param>
+            <param name="rpcPort">A port of the communication.</param>        
+        </member>
+        <member name="M:Pickering.Lxi.Communication.IDeviceManager.Disconnect">
+            <summary>
+            Disconnects from LXI or PXI/PCI device.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.IDeviceManager.GetCountCardType(Pickering.Lxi.Communication.CardType)">
+            <summary>
+            Returns number of cards used by the device based on type of cards.
+            </summary>
+            <param name="cardsType">A card type.</param>
+            <returns>Number of cards in the device.</returns>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.IDeviceManager.Information">
+            <summary>
+            Gets basic information about the device.
+            </summary>
+            <remarks>For PXI/PCI devices are some properties empty or have 
+            system's default value.</remarks>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.IDeviceManager.Connected">
+            <summary>
+            Gets <b>true</b> if the instance of <b>DeviceManager</b> class is 
+            connected with device; otherwise <b>false</b>.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.IDeviceManager.IsPxiDevice">
+            <summary>
+            Tests if the device is PXI/PCI.
+            </summary>
+            <returns> <b>true</b> if device is PXI/PCI; otherwise <b>false</b>.
+            </returns>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.IDeviceManager.ReadTimeout">
+            <summary>
+            Gets or sets timeout for reading message from communication 
+            channel.
+            </summary>
+            <remarks>Some versions of Windows CE don't need support this 
+            feature. PXI/PCI device doesn't use this feature as well.
+            </remarks>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.IDeviceManager.Item(System.Int32)">
+            <summary>
+            Gets a card based on index of the card.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.IDeviceManager.ServerBridgeVersion">
+            <summary>
+            Version of the Server Bridge.
+            </summary>
+            <remarks>This property is not supported for PXI/PCI devices.
+            </remarks>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.IDeviceManager.WriteTimeout">
+            <summary>
+            Gets or sets timeout for writing message to communication channel.
+            </summary>
+            <remarks>Some versions of Windows CE don't need support this 
+            feature. PXI/PCI device doesn't use this feature as well.</remarks>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.IDeviceManager.CommunicationFilter">
+            <summary>
+            Gets a communication filter.
+            </summary>
+            <remarks>Don't use this property, because you can demage a 
+            communication channel - it is only for advanced developers.
+            </remarks>
+            <remarks>This property is not supported for PXI/PCI devices.
+            </remarks>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.IDeviceManager.CardsCount">
+            <summary>
+            Gets number of cards used by the device.
+            </summary>
+            <remarks>It returns number of all types of cards in the device.
+            </remarks>
+        </member>
+        <member name="E:Pickering.Lxi.Communication.IDeviceManager.LoadCardsException">
+            <summary>
+            Cautch all exceptions which are generated in initialization section of a DeviceManager.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.IDeviceManager.LxiManagement">
+            <summary>
+            Returns <b>LxiManagement</b> object. It is Server Bridge functionality for low level access.
+            </summary>        
+        </member>
+        <member name="T:Pickering.Lxi.Communication.LxiClass">
+            <summary>
+            LXI classes according to LXI standard.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiClass.None">
+            <summary>
+            This is not valid LXI device. This means that device is 
+            probably PXI/PCI.
+            </summary>        
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiClass.A">
+            <summary>
+            Lxi class A.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiClass.B">
+            <summary>
+            Lxi class B.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiClass.C">
+            <summary>
+            Lxi class C.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.LxiDeviceManagement">
+            <summary>
+            The class supports all fundamental low level Server Bridge API.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.#ctor(Pickering.Lxi.Communication.DeviceManager)">
+            <summary>
+            Creates LxiDeviceManagement object.        
+            </summary>
+            <param name="manager">Device manager</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.ErrorCodeToMessage(System.Int32)">
+            <summary>
+            Returns error message of a fundamental Server Bridge's error code.
+            </summary>
+            <param name="errorCode">An error code.</param>
+            <returns>An error message.</returns>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.LxiDeviceManagement.ServerBridgeVersion">
+            <summary>
+            Gets version of the Server Bridge.
+            </summary>
+            <remarks>This property is not supported for PXI/PCI devices.
+            </remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetCountCardType(Pickering.Lxi.Communication.CardType)">
+            <summary>
+            Returns number of cards used by the device based on type of cards.
+            </summary>
+            <param name="cardType">A card type.</param>
+            <returns>Number of cards in the device.</returns>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.LxiDeviceManagement.TotalCardsCount">
+            <summary>
+            Gets number of all cards (no mater on type of card).
+            </summary>
+            <returns>Number of all cards in the device.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetTotalOpenedCards">
+            <summary>
+            Gets number of all opened cards (no matter on type of card).
+            </summary>
+            <returns>Number of all opened cards in the device.</returns>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.LxiDeviceManagement.TotalModulesCount">
+            <summary>
+            Gets number of all active modules.
+            </summary>
+            <returns>Number of all active modules.</returns>
+            <remarks>One active module supports one type of card.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetTotalSessionsCount">
+            <summary>
+            Gets number of all live sessions.
+            </summary>
+            <returns>Number of all live sessions in the device.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetCardSessionsCount(Pickering.Lxi.Communication.CardType,System.Int32)">
+            <summary>
+            Gets number of sessions which uses given card.
+            </summary>
+            <param name="cardsType">Card type.</param>
+            <param name="cardId">Card ID.</param>
+            <returns>Number of live sessions which uses the card in the device.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetCardSessionsCount(Pickering.Lxi.Card)">
+            <summary>
+            Gets number of sessions which uses given card.
+            </summary>
+            <param name="card">Card.</param>        
+            <returns>Number of live sessions which uses the card in the device.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.UseForeignSession(System.Int32,System.String)">
+            <summary>
+            Adds another session ID to actual session.
+            </summary>
+            <param name="sessionId">Sesion ID.</param>
+            <param name="token">Unique confirmation token.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.ReleaseCard(Pickering.Lxi.Communication.CardType,System.Int32)">
+            <summary>
+            Un-flag all cards of certain card type for use.
+            </summary>
+            <param name="cardType">Type of the card.</param>
+            <param name="cardNumber">Card number.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.ReleaseForeignSession(System.Int32)">
+            <summary>
+            Reselases used foreign session.
+            </summary>
+            <param name="sessionId">Sesion ID.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetActiveSession(System.String@)">
+            <summary>
+            Gets active session for using.
+            </summary>        
+            <param name="token">Unique confirmation token.</param>
+            <returns>Session ID.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.HasExclusiveAccess(Pickering.Lxi.Communication.CardType,System.Int32,Pickering.Lxi.Communication.CardOwnerType)">
+            <summary>
+            Tests whether the card is opened for exclusive access or not.
+            </summary>
+            <param name="cardsType">Card type.</param>
+            <param name="cardId">Card ID.</param>
+            <param name="owner">Specify more a question who is an owner.</param>
+            <returns>Returns <b>true</b> if the card is opened for exclusive access; otherwise <b>false</b>.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.HasExclusiveAccess(Pickering.Lxi.Card,Pickering.Lxi.Communication.CardOwnerType)">
+            <summary>
+            Tests whether the card is opened for exclusive access or not by the client.
+            </summary>
+            <param name="card">Card.</param>        
+            <param name="owner">Specify more a question who is an owner.</param>
+            <returns>Returns <b>true</b> if the card is opened for exclusive access; otherwise <b>false</b>.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.IsCardUsed(Pickering.Lxi.Communication.CardType,System.Int32,Pickering.Lxi.Communication.CardOwnerType)">
+            <summary>
+            Tests if the card is opened (used) or not by the client.
+            </summary>
+            <param name="cardsType">Card type.</param>
+            <param name="cardId">Card ID.</param>
+            <param name="owner">Specify more a question who is an owner.</param>
+            <returns><b>true</b> if the card is used; otherwise <b>false</b>.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.IsCardUsed(Pickering.Lxi.Card,Pickering.Lxi.Communication.CardOwnerType)">
+            <summary>
+            Tests if the card is opened (used) or not.
+            </summary>
+            <param name="card">Card.</param>
+            <param name="owner">Specify more a question who is an owner.</param>
+            <returns><b>true</b> if the card is used; otherwise <b>false</b>.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetUsedCards(Pickering.Lxi.Communication.CardType)">
+            <summary>
+            Gets used cards by the client.
+            </summary>
+            <param name="cardType">Card type.</param>
+            <returns>An array of card IDs.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetUsableCards(Pickering.Lxi.Communication.CardType)">
+            <summary>
+            Gets usable cards. The cards are not opened at all or are obened for non-exclusive access.
+            </summary>
+            <param name="cardType">Card type.</param>
+            <returns>An array of card IDs.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetForeignSessions">
+            <summary>
+            Gets used foreign sessions of active session.
+            </summary>
+            <returns>An array of foreign sessions.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.ChangeCardAccess(Pickering.Lxi.Card,Pickering.Lxi.Communication.AccessType)">
+            <summary>
+            Change previous opened card access.
+            </summary>
+            <param name="card">Card.</param>        
+            <param name="cardAccess">Card access type.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.ChangeCardAccess(Pickering.Lxi.Communication.CardType,System.Int32,Pickering.Lxi.Communication.AccessType)">
+            <summary>
+            Change previous opened card access.
+            </summary>
+            <param name="cardType">Card type.</param>        
+            <param name="cardId">Card Id.</param>        
+            <param name="cardAccess">Card access type.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetConnectedClients">
+            <summary>
+            Gets hosts which communicates with the LXI remotely.
+            </summary>
+            <returns>Returns list of remote hosts.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetConnectedCardClients(Pickering.Lxi.Communication.CardType,System.Int32)">
+            <summary>
+            Gets hosts which uses a specific card on the LXI remotely.
+            </summary>
+            <param name="cardType">Card type.</param>
+            <param name="cardId">Card ID.</param>
+            <returns>Returns list of remote hosts.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetConnectedCardClients(Pickering.Lxi.Card)">
+            <summary>
+            Gets hosts which uses a specific card on the LXI remotely.
+            </summary>
+            <param name="card">Card.</param>        
+            <returns>Returns list of remote hosts.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetChassisVoltages">
+            <summary>
+            Gets all monitored voltages values of the LXI chassis.
+            </summary>
+            <returns>Array of the voltages.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetChassisTemperatures">
+            <summary>
+            Gets all monitored temperatures of the LXI chassis.
+            </summary>
+            <returns>Array of the temperatures.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetChassisFanSpeeds">
+            <summary>
+            Gets all monitored fan speed values of the LXI chassis.
+            </summary>
+            <returns>Array of the fans speeds.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.SetChassisFanSpeeds(System.Int32)">
+            <summary>
+            Set the fan speed of the LXI chassis.
+            </summary>
+            <param name="maxSpeed">1 for max speed. 0 for automatic speed.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.PowerCycle(System.Int32)">
+            <summary>
+            Perform reset function. Hard reset means power down and stay down, soft reset means power cycle.
+            </summary>
+            <param name="mode">Chassis power mode. (0 - for power down, 1 - for reboot or power cycle)</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.Identify(System.Int32)">
+            <summary>
+            Identify chassis function.
+            </summary>
+            <param name="identify">0 - for disable identify feature, 1 - for enable identify feature</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.StoreStates(System.Int32)">
+            <summary>
+            Enable or disable storing actual card configuration.
+            Enabled means that the next start up of the chassis will restore last card configuration.
+            Disabled - all relays opened(reset status).
+            </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.DisableSecurity">
+            <summary>
+            Disable LXI security.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.EnableSecurity(System.String)">
+            <summary>
+            Enable LXI security.
+            </summary>
+            <param name="password">New security password.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsCreateDirectory(System.String,System.Boolean,System.Int32)">
+            <summary>
+            Creates directory in LXI file-system.
+            </summary>
+            <param name="remoteDirectory">Remote directory name with full path to create.</param>
+            <param name="force">If TRUE, make parent directories as needed.</param>
+            <param name="attributes">
+            Directory attributes in Linux octal representation. If set to -1, attributes will be set to default value 0644.
+            See more: https://docs.nersc.gov/filesystems/unix-file-permissions/
+            </param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsDeleteDirectory(System.String)">
+            <summary>
+            Delete directory in LXI file-system.
+            </summary>
+            <param name="remoteDirectory">Remote directory name with full path to delete.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsDeleteFile(System.String)">
+            <summary>
+            Delete file in LXI file-system.
+            </summary>
+            <param name="remoteFile">Remote file name with full path to delete.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsDirectoryExists(System.String)">
+            <summary>
+            Check if directory exists in LXI file-system.
+            </summary>
+            <param name="remoteDirectory">Remote directory name with full path.</param>
+            <returns>True if directory exists, otherwise false.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsDownloadFile(System.String,System.String)">
+            <summary>
+            Download file from LXI file-system to local.
+            </summary>
+            <param name="remoteFile">Remote file name with full path.</param>
+            <param name="localFile">Local file name with full path.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsDownloadFile(System.String,System.String,Pickering.Lxi.Communication.FileTransferProgressHandler)">
+            <summary>
+            Download file from LXI file-system to local.
+            </summary>
+            <param name="remoteFile">Remote file name with full path.</param>
+            <param name="localFile">Local file name with full path.</param>
+            <param name="progressStatus">Download progress status.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsDownloadFile(System.String,System.IO.Stream,Pickering.Lxi.Communication.FileTransferProgressHandler,System.Int32)">
+            <summary>
+            Download file from LXI file-system to local.
+            </summary>
+            <param name="remoteFile">Remote file name with full path.</param>
+            <param name="stream">Stream to receive data.</param>
+            <param name="progressStatus">Download progress status.</param>
+            <param name="bufferSize">Transfer buffer size (default is 512bytes).</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsFileExists(System.String)">
+            <summary>
+            Check if file exists in LXI file-system.
+            </summary>
+            <param name="remoteFile">Remote file name with full path.</param>
+            <returns>True if file exists, otherwise false.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsGetDirectoryAttributes(System.String)">
+            <summary>
+            Get directory attributes in LXI file-system.
+            </summary>
+            <param name="remoteDirectory">Remote directory name with full path.</param>
+            <returns>
+            Directory attributes in Linux octal representation.
+            See more: https://docs.nersc.gov/filesystems/unix-file-permissions/
+            </returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsGetFileAttributes(System.String)">
+            <summary>
+            Get file attributes in LXI file-system.
+            </summary>
+            <param name="remoteFile">Remote file name with full path.</param>
+            <returns>
+            File attributes in Linux octal representation.
+            See more: https://docs.nersc.gov/filesystems/unix-file-permissions/
+            </returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsSetDirectoryAttributes(System.String,System.Int32)">
+            <summary>
+            Set directory attributes in LXI file-system.
+            </summary>
+            <param name="remoteDirectory">Remote directory name with full path.</param>
+            <param name="attributes">
+            Directory attributes in Linux octal representation.
+            See more: https://docs.nersc.gov/filesystems/unix-file-permissions/
+            </param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsSetFileAttributes(System.String,System.Int32)">
+            <summary>
+            Set file attributes in LXI file-system.
+            </summary>
+            <param name="remoteFile">Remote file name with full path.</param>
+            <param name="attributes">
+            File attributes in Linux octal representation.
+            See more: https://docs.nersc.gov/filesystems/unix-file-permissions/
+            </param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsUploadFile(System.String,System.String,System.Boolean,System.Int32)">
+            <summary>
+            Upload local file to LXI file-system.
+            </summary>
+            <param name="localFile">Local file name with full path.</param>
+            <param name="remoteFile">Remote file name with full path.</param>
+            <param name="force">If true, it will create a directory structure if doesn't exists.</param>
+            <param name="attributes">
+            File attributes in Linux octal representation. If set to -1, attributes will be set to default value 0644.
+            See more: https://docs.nersc.gov/filesystems/unix-file-permissions/
+            </param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsUploadFile(System.String,System.String,Pickering.Lxi.Communication.FileTransferProgressHandler,System.Boolean,System.Int32)">
+            <summary>
+            Upload local file to LXI file-system.
+            </summary>
+            <param name="localFile">Local file name with full path.</param>
+            <param name="remoteFile">Remote file name with full path.</param>
+            /// <param name="progressStatus">Upload file progress status callback.</param>
+            <param name="force">If true, it will create a directory structure if doesn't exists.</param>
+            <param name="attributes">
+            File attributes in Linux octal representation. If set to -1, attributes will be set to default value 0644.
+            See more: https://docs.nersc.gov/filesystems/unix-file-permissions/
+            </param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsUploadFile(System.IO.Stream,System.String,System.Boolean,System.Int32)">
+            <summary>
+            Upload local file to LXI file-system.
+            </summary>
+            <param name="stream">Stream containing the data which will be saved as a file in LXI-system.</param>
+            <param name="remoteFile">Remote file name with full path.</param>
+            <param name="force">If true, it will create a directory structure if doesn't exists.</param>
+            <param name="attributes">
+            File attributes in Linux octal representation. If set to -1, attributes will be set to default value 0644.
+            See more: https://docs.nersc.gov/filesystems/unix-file-permissions/
+            </param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.FsUploadFile(System.IO.Stream,System.String,Pickering.Lxi.Communication.FileTransferProgressHandler,System.Boolean,System.Int32)">
+            <summary>
+            Upload local file to LXI file-system.
+            </summary>
+            <param name="stream">Stream containing the data which will be saved as a file in LXI-system.</param>
+            <param name="remoteFile">Remote file name with full path.</param>
+            <param name="progressStatus">Upload file progress status callback.</param>
+            <param name="force">If true, it will create a directory structure if doesn't exists.</param>
+            <param name="attributes">
+            File attributes in Linux octal representation. If set to -1, attributes will be set to default value 0644.
+            See more: https://docs.nersc.gov/filesystems/unix-file-permissions/
+            </param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.IsServiceRunning(Pickering.Lxi.Communication.LxiServices)">
+            <summary>
+            Determine if specified LXI service is running or not.
+            </summary>
+            <param name="service">LXI service.</param>
+            <returns>True if service is running, otherwise false.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.GetRemoteModuleVersion(Pickering.Lxi.Communication.RemoteModulesVersion)">
+            <summary>
+            Gets specified remote module <see cref="T:Pickering.Lxi.Communication.RemoteModulesVersion"/> version string.
+            </summary>
+            <param name="remoteModule">Remote module <see cref="T:Pickering.Lxi.Communication.RemoteModulesVersion"/>.</param>
+            <returns>Remote module version string.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.ClearSwReset">
+            <summary>
+            Clears SW Reset flag if active, so after that all cards will be available for control again.
+            Note: This function is supported only on some LXI units that supports "Sequencing and Triggering" (6X-XXX-002 units).
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.ProtectionResetEnable(Pickering.Lxi.Communication.CardType,System.Int32[],System.Int32[],System.Int32,System.Int32)">
+            <summary>
+            Enable protection reset feature. If the timer will exceed (no subsequent call has been obtained to reset the timer) all
+            or dedicated cards will be reset.
+            </summary>
+            <param name="cardType">Card type to apply the feature. See <see cref="T:Pickering.Lxi.Communication.CardType"/> for possible options.</param>
+            <param name="busList">The array of card's logical bus location. Note: If <see ref="busList"/> and <see ref="deviceList"/> is set to empty array, all cards will be protected by reset.</param>
+            <param name="deviceList">The array of card's logical device location. Note: If <see ref="busList"/> and <see ref="deviceList"/> is set to empty array, all cards will be protected by reset.</param>
+            <param name="cardsToProtect">The number of cards to protect. Note: If the value is set to 0, all cards will be protected by reset. CardsToProtect should match the length of Bus/Device array.</param>
+            <param name="timeout">Timeout in seconds. When timeout exceeds all or dedicated cards will be reset. Min value: 1, Max value: 60.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.ProtectionResetDisable">
+            <summary>
+            Disable reset protection feature.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDeviceManagement.CompareAlphanum(System.String,System.String)">
+            <summary>
+            Compare versions as string.
+            </summary>
+            <param name="version1">Version string #1.</param>
+            <param name="version2">Version string #.</param>
+            <returns>
+            Lower then zero ... version1 is lower then version2.
+            Zero - version1 equals to version2.
+            Lower then zero ... version1 is greater then version2.
+            </returns>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.LxiDiscovery">
+            <summary>
+            Supports fundamental Pickering's discovery mechanism.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDiscovery.BroadcastMessage(System.Boolean,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Discovers LXI devices through all available network interfaces (included LXIs connected via USB).
+            </summary>
+            <param name="lockDevice">Flag for locking the device.</param>
+            <param name="lockTimeout">Maximum waiting time for the lock to be freed.</param>
+            <param name="ioTimeout">I/O timeout.</param>
+            <param name="retryTimeout">Interval after the network discovery command will be repeated.</param>
+            <param name="communicationTimeout">Interval that network discovery will take. Any devices doesn't respond in this interval won't be found.</param>
+            <param name="mode">Set to zero.</param>
+            <param name="tcpServerPort">Discovery port of echo direct service.</param>
+            <param name="echoTimeout">Timeout of waiting for responses.</param>
+            <returns>List of searched devices. Every device is represented by
+            DeviceInfo object.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDiscovery.ParseParam(System.Object[],System.Net.Sockets.TcpClient)">
+            <summary>
+            Parses a response.
+            </summary>
+            <param name="param">Result for parsing is set to the new object
+            (result) which describes the LXI device.</param>
+            <param name="session">Is needed because LXI info object wants to 
+            need a client address.</param>
+            <returns><b>LxiInfo</b> object.</returns>
+        </member>
+        <member name="E:Pickering.Lxi.Communication.LxiDiscovery.DiscoveryException">
+            <summary>
+            Handles all exception during discovery process.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDiscovery.DirectEcho(System.String,System.Int32,System.Int32)">
+            <summary>
+            Gets information about the LXI device.
+            </summary>
+            <param name="hostName">Device network address.</param>
+            <param name="port">Discovery port of echo direct service.</param>
+            <param name="timeout">Timeout of waiting for responses.</param>
+            <returns>A searched device information. The device is represented 
+            by DeviceInfo object.</returns>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException">Discovery message is 
+            descructed or unsupported.</exception>
+            <exception cref="T:System.ArgumentNullException"><i>hostName</i>> is a null 
+            reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><i>port</i> is not 
+            between <see cref="F:System.Net.IPEndPoint.MinPort"/> and 
+            <see cref="F:System.Net.IPEndPoint.MaxPort"/>. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing
+            the socket.</exception>
+            <example>
+            <code>
+            DeviceInfo ldi = new LxiDiscovery().DirectEcho(host, 9999, 2000);
+            if(ldi!=null)
+            {
+                Console.WriteLine("Number of cards in the device is: {0}",ldi.CardsCount);
+            }
+            </code>
+            </example>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDiscovery.BroadcastEcho(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Discovers LXI devices on the subnet of the network.
+            </summary>
+            <param name="port">Discovery port of echo broadcast service.
+            </param>
+            <param name="tcpServerPort">Local port which the local 
+            communication channel uses. Value 0 - system choices first 
+            available port.</param>
+            <param name="timeout">Timeout of waiting for responses.</param>
+            <returns>List of searched devices. Every device is represented by
+            DeviceInfo object.</returns>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException">Discovery message is 
+            descructed or unsupported.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException"><i>port</i> is not
+            between <see cref="F:System.Net.IPEndPoint.MinPort"/> and 
+            <see cref="F:System.Net.IPEndPoint.MaxPort"/>. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing
+            the socket. </exception>
+            <remarks> If the <i>tcpServerPort</i> has value 0 then system 
+            selects first accessible.</remarks>
+            <example>
+            <code>
+            ReadOnlyCollection &lt; DeviceInfo &gt; ldis = new LxiDiscovery().BroadcastEcho(9999, 0, 4000);
+            if(ldis!=null)
+            {
+                Console.WriteLine("Number of LXI device is: {0}",ldis.Count);
+            }
+            </code>
+            </example> 
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDiscovery.BroadcastEcho(System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Discovers LXI devices on the subnet of the network.
+            </summary>
+            <param name="broadcastAddress">Broadcast network address. It can 
+            be 255.255.255.255 or any valid broadcast address.</param>
+            <param name="port">Discovery port of echo broadcast service.
+            </param>
+            <param name="tcpServerPort">Local port which the local 
+            communication channel uses. Value 0 - system choices first 
+            available port.</param>
+            <param name="timeout">Timeout of waiting for responses.</param>
+            <returns>List of searched devices. Every device is represented by
+            DeviceInfo object.</returns>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException">Discovery message is 
+            descructed or unsupported.</exception>        
+            <exception cref="T:System.ArgumentOutOfRangeException"><i>port</i> is not
+            between <see cref="F:System.Net.IPEndPoint.MinPort"/> and 
+            <see cref="F:System.Net.IPEndPoint.MaxPort"/>. </exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing
+            the socket. </exception>
+            <exception cref="T:System.FormatException"><i>ipString</i> is not a valid
+            IP address.</exception>
+            <remarks> If the <i>tcpServerPort</i> has value 0 then system 
+            selects first accessible.</remarks>
+            <example>
+            <code>
+            ReadOnlyCollection &lt; DeviceInfo &gt; ldis = new LxiDiscovery().BroadcastEcho("192.168.4.255",9999, 0, 4000);
+            if(ldis!=null)
+            {
+                Console.WriteLine("Number of LXI device is: {0}",ldis.Count);
+            }
+            </code>
+            </example> 
+        </member>
+        <member name="M:Pickering.Lxi.Communication.LxiDiscovery.MulticastEcho(System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Looks for LXI devices on the network.
+            </summary>
+            <remarks>This method is only for testing purposes. Please, use 
+            ILxiDiscovery.BroadcastEcho instead.</remarks>
+            <param name="group">Multicast group.</param>
+            <param name="port">Discovery port of multicast echo service.
+            </param>
+            <param name="tcpServerPort">Local port which the local 
+            communication channel uses. Value 0 - system choices first 
+            available port.</param>
+            <param name="timeout">Timeout of waiting for responses.</param>
+            <param name="timeToLive">TTL.</param>
+            <returns>List of searched devices. Every device is represented by 
+            DeviceInfo object.</returns>
+            <exception cref="T:System.ArgumentNullException"><i>group</i> is a null 
+            reference (<b>Nothing</b> in Visual Basic).</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException"><i>port</i> is not
+            between <see cref="F:System.Net.IPEndPoint.MinPort"/> and 
+            <see cref="F:System.Net.IPEndPoint.MaxPort"/>. </exception>
+            <exception cref="T:Pickering.Lxi.Communication.ClientBridgeException">Discovery message is 
+            descructed or unsupported.</exception>
+            <exception cref="T:System.Net.Sockets.SocketException">An error occurred when accessing
+            the socket. </exception>
+            <exception cref="T:System.FormatException"><i>ipString</i> is not a valid 
+            IP address. </exception>
+            <remarks> If the <i>tcpServerPort</i> has value 0 then system 
+            selects first accessible.</remarks>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.LxiServices">
+            <summary>
+            LXI chassis services.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiServices.ChassisMonitoring">
+            <summary>
+            Chassis monitoring service.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiServices.Http">
+            <summary>
+            Web server daemon.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiServices.Mdns">
+            <summary>
+            mDNS responder daemon.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiServices.Pilserv">
+            <summary>
+            LXI services monitoring service.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiServices.Portmap">
+            <summary>
+            DARPA port to RPC program number mapper?
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiServices.RelayCounting">
+            <summary>
+            Relay counting service.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiServices.Sequencer">
+            <summary>
+            Sequencer service.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiServices.Ssh">
+            <summary>
+            Secure shell daemon.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiServices.Vxi11">
+            <summary>
+            VXI11 daemon.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.LxiServices.WebSockify">
+            <summary>
+            HTML5 SFP bridge.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResDeviceManagerTS1">
+            <summary>
+              Looks up a localized string similar to &quot;Device manager is connected to {0}&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResDeviceManagerTS2">
+            <summary>
+              Looks up a localized string similar to &quot;Device manager is disconnected&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmAccessDenied">
+            <summary>
+              Looks up a localized string similar to &quot;Access denied&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmBoardNotSupported">
+            <summary>
+              Looks up a localized string similar to &quot;Board index is not supported&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmCardAbsent">
+            <summary>
+              Looks up a localized string similar to &quot;Card missing&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmCardType">
+            <summary>
+              Looks up a localized string similar to &quot;No card of this type&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmClientCardUsed">
+            <summary>
+              Looks up a localized string similar to &quot;The card already in use&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmCommunicationFailed">
+            <summary>
+              Looks up a localized string similar to &quot;Communication failed&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmConnectionFailed">
+            <summary>
+              Looks up a localized string similar to &quot;Connection could not be established&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmConnectionTimeout">
+            <summary>
+              Looks up a localized string similar to &quot;Connection timed out&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmCreateDirectoryFailed">
+            <summary>
+              Looks up a localized string similar to &quot;Create directory failed&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmDataCopy">
+            <summary>
+              Looks up a localized string similar to &quot;Error while copying output data to response buffer&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmDataLength">
+            <summary>
+              Looks up a localized string similar to &quot;Required length of data is too long&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmDeleteDirectoryFailed">
+            <summary>
+              Looks up a localized string similar to &quot;Delete directory failed&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmDeleteFileFailed">
+            <summary>
+              Looks up a localized string similar to &quot;Delete file failed&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmDeviceAlreadyConnected">
+            <summary>
+              Looks up a localized string similar to &quot;Connection is already established. Doesn&apos;t need second connection&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmDeviceInfo">
+            <summary>
+              Looks up a localized string similar to &quot;Information about LXI device is not obtainable&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmDeviceIsPxi">
+            <summary>
+              Looks up a localized string similar to &quot;Connection is established only for localhost - PXI (PCI) system&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmDeviceLocked">
+            <summary>
+              Looks up a localized string similar to &quot;Device is locked - another client has exclusive access&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmDirectoryNotExists">
+            <summary>
+              Looks up a localized string similar to &quot;Directory doesn&apos;t exists&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmDisconnected">
+            <summary>
+              Looks up a localized string similar to &quot;Not established connection with device&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmDiscoveryFormat">
+            <summary>
+              Looks up a localized string similar to &quot;The format of the discovery message is invalid or unsupported&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmFatal01">
+            <summary>
+              Looks up a localized string similar to &quot;Fatal state 01 of the process&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmFileNotExists">
+            <summary>
+              Looks up a localized string similar to &quot;File doesn&apos;t exists&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmFileOpenFailed">
+            <summary>
+              Looks up a localized string similar to &quot;Open file failed&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmFileReadFailed">
+            <summary>
+              Looks up a localized string similar to &quot;Read file failed&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmFileWriteFailed">
+            <summary>
+              Looks up a localized string similar to &quot;Write file failed&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmFunctionNotImplemented">
+            <summary>
+              Looks up a localized string similar to &quot;Function is not implemented or it is reserved&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmIncorrectObjectType">
+            <summary>
+              Looks up a localized string similar to &quot;The object has to be type of \&apos;{0}\&apos;&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmInvalidAddress">
+            <summary>
+              Looks up a localized string similar to &quot;Address of the card is invalid&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmInvalidBoard">
+            <summary>
+              Looks up a localized string similar to &quot;Invalid board index&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmInvalidCardId">
+            <summary>
+              Looks up a localized string similar to &quot;Card ID is invalid&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmInvalidErrorCode">
+            <summary>
+              Looks up a localized string similar to &quot;Invalid error code&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmInvalidFunction">
+            <summary>
+              Looks up a localized string similar to &quot;The function is invalid&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmInvalidMessage">
+            <summary>
+              Looks up a localized string similar to &quot;Received message has invalid format&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmInvalidSession">
+            <summary>
+              Looks up a localized string similar to &quot;Invalid session ID&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmInvalidToken">
+            <summary>
+              Looks up a localized string similar to &quot;Invalid security confirmation token&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmNoFileTransfer">
+            <summary>
+              Looks up a localized string similar to &quot;No file transfer available&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmNotImplementedFunction">
+            <summary>
+              Looks up a localized string similar to &quot;Function is not implemented or it is reserved&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmNotSurportedFunction">
+            <summary>
+              Looks up a localized string similar to &quot;Function is not supported by this LXI device&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmOpenCard">
+            <summary>
+              Looks up a localized string similar to &quot;The card is used&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmOutOfResources">
+            <summary>
+              Looks up a localized string similar to &quot;Out of resources&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmParameterType">
+            <summary>
+              Looks up a localized string similar to &quot;Parameter type not supported&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmProtectionResetPerformed">
+            <summary>
+              Looks up a localized string similar to &quot;Protection reset performed.&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmSetAttributeFailed">
+            <summary>
+              Looks up a localized string similar to &quot;Set directory/file attributes failed&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmStrangeErrorCode">
+            <summary>
+              Looks up a localized string similar to &quot;No error code description available&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmSuccess">
+            <summary>
+              Looks up a localized string similar to &quot;Success&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmUnsupportedType">
+            <summary>
+              Looks up a localized string similar to &quot;Data type is not supported&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResEmWaitTimeout">
+            <summary>
+              Looks up a localized string similar to &quot;Wait timeout expired&quot;.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Communication.Properties.Resources.ResInfDeviceInfoTS">
+            <summary>
+              Looks up a localized string similar to &quot;The device is on address {0}  (version={1}, serial number={2}, firmware version={3}, class={4}, model={5}, description={6}, rpc port={7}, echo port={8}, cards count={9})&quot;.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.RemoteModulesVersion">
+            <summary>
+            LXI remote modules.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.RemoteModulesVersion.Pi620">
+            <summary>
+            A compact 3-channel function generator in a PXI 3U single-slot module.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.RemoteModulesVersion.Pi743">
+            <summary>
+            The 41-743 is a fully isolated programmable power supply capable of delivering
+            output voltages to 48V with a voltage setting resolution of less than 1mV.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.RemoteModulesVersion.Picmlx">
+            <summary>
+            ClientBridge communication module.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.RemoteModulesVersion.Piplx">
+            <summary>
+            ClientBridge PXI/LXI module.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.RemoteModulesVersion.Pipslx">
+            <summary>
+            ClientBridge 65-200-001 power sequencer module.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.RemoteModulesVersion.Pilpxi">
+            <summary>
+            ClientBridge PXI driver module.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.RemoteModulesVersion.Px773x">
+            <summary>
+            ClientBridge VXI's PX773x module.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.RemoteModulesVersion.Pxa72xx">
+            <summary>
+            ClientBridge XI's PXA72xx module.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.RemoteModulesVersion.Pxm78xx">
+            <summary>
+            ClientBridge XI's PXM78xx module.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Communication.RemoteModulesVersion.Sequencer">
+            <summary>
+            Trigger service module.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.ServerBridgeException">
+            <summary>
+            The exception class for the Server Bridge communication problems.
+            </summary>    
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ServerBridgeException.#ctor">
+            <summary>
+            Initializes a new instance of the <b>ServerBridgeException</b> 
+            class.
+            </summary> 
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ServerBridgeException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <b>ServerBridgeException</b> 
+            class for the specific error message.
+            </summary>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ServerBridgeException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <b>ServerBridgeException</b> 
+            class for the specific error message with an inner exception.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="innerException">The innner exception object.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ServerBridgeException.#ctor(System.Int32)">
+            <summary>
+            Initializes a new instance of the <b>ServerBridgeException</b> 
+            class for the specific error code.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ServerBridgeException.#ctor(System.Int32,Pickering.Lxi.Communication.DeviceManager)">
+            <summary>
+            Initializes a new instance of the <b>ServerBridgeException</b> 
+            class for the specific error code.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+            <param name="manager">The Device manager.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ServerBridgeException.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <b>ServerBridgeException</b> 
+            class for the specific error message with an error code.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ServerBridgeException.#ctor(System.Int32,System.Exception)">
+            <summary>
+            Initializes a new instance of the <b>ServerBridgeException</b> 
+            class for the specific error code with an inner exception.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+            <param name="innerException">The inner exception object.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ServerBridgeException.#ctor(System.Int32,Pickering.Lxi.Communication.DeviceManager,System.Exception)">
+            <summary>
+            Initializes a new instance of the <b>ServerBridgeException</b> 
+            class for the specific error code with an inner exception.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+            <param name="manager">The device manager.</param>
+            <param name="innerException">The inner exception object.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ServerBridgeException.#ctor(System.Int32,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <b>ServerBridgeException</b> 
+            class for the specific error message with specific error code 
+            and an inner exception.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+            <param name="message">The error message.</param>
+            <param name="innerException">Inner exception object.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.ServerBridgeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <b>ServerBridgeException</b>
+            class for the specific serealization info and context.
+            </summary>
+            <remarks>Only for serialization purposes.</remarks>
+            <param name="info">A serialization info object.</param>
+            <param name="context">A serialization context object.</param>
+        </member>
+        <member name="T:Pickering.Lxi.Communication.SocketExtensions">
+            <summary>
+            System.Net.Sockets.Socket extensions.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Communication.SocketExtensions.SetKeepAliveValues(System.Net.Sockets.Socket,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Enable or disable keep alive packet on socket.
+            </summary>
+            <param name="socket">Socket object.</param>
+            <param name="enable">Enable or disable.</param>
+            <param name="keepAliveInterval">Send a packet interval.</param>
+            <param name="retryInterval">No response resend interval.</param>
+        </member>
+        <member name="T:Pickering.Lxi.Card">
+            <summary>
+            The abstract <b>Card</b> class represents any type of card.
+            </summary>
+            <remarks>It is used by other parts of the ClientBridge.</remarks>    
+        </member>
+        <member name="F:Pickering.Lxi.Card.cardOpened">
+            <summary>
+            Card's opened/closed flag.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Card.cardId">
+            <summary>
+            Unique card ID.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.Card.cardInfo">
+            <summary>
+            Card info.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Card.Manager">
+            <summary>
+            Gets or sets Device Manager.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.Card.Info">
+            <summary>
+            Gets information about the card.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.Card.IsOpen">
+            <summary>
+            Information whether the card is openned or not.
+            </summary>
+            <returns> <b>true</b> if the card is opened; otherwise 
+            <b>false</b>.</returns>
+        </member>
+        <member name="M:Pickering.Lxi.Card.Open(Pickering.Lxi.Communication.AccessType)">
+            <summary>
+            Opens the card.
+            </summary>
+            <param name="access">Asking for dedicated level of access to the card.</param>
+        </member>
+        <member name="M:Pickering.Lxi.Card.Close">
+            <summary>
+            Closes the card.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.CardInfo">
+            <summary>
+            The <b>CardInfo</b> class more describes every type of a card.
+            </summary>
+            <remarks>This is only an abstract class which represents information 
+            about all type of cards.</remarks>        
+        </member>
+        <member name="F:Pickering.Lxi.CardInfo.card">
+            <summary>
+            Associated card.
+            </summary>        
+        </member>
+        <member name="F:Pickering.Lxi.CardInfo.cardType">
+            <summary>
+            Card Type.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.CardInfo.#ctor(Pickering.Lxi.Card,Pickering.Lxi.Communication.CardType)">
+            <summary>
+            Creates Card Info object for given card.
+            </summary>
+            <param name="card">Card object.</param>
+            <param name="typeInfo">Type of card.</param>
+        </member>
+        <member name="P:Pickering.Lxi.CardInfo.Id">
+            <summary>
+            Unique card ID.
+            </summary>
+        </member>
+        <member name="P:Pickering.Lxi.CardInfo.TypeInfo">
+            <summary>
+            Card Type.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.ClientBridgeErrorCode">
+            <summary>
+            This error enumerator represents various errors of communication 
+            module.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="F:Pickering.Lxi.ClientBridgeErrorCode.Success">
+            <summary>
+            Success.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.ClientBridgeErrorCode.DiscoveryFormat">
+            <summary>
+            Format of discovery message is corrupted.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.ClientBridgeErrorCode.CommunicationFailed">
+            <summary>
+            Communication between server and client failed.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.ClientBridgeErrorCode.UnsupportedType">
+            <summary>
+            Unsupported data type in the message.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.ClientBridgeErrorCode.InvalidMessage">
+            <summary>
+            Invalid message received from the Server Bridge.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.ClientBridgeErrorCode.Disconnected">
+            <summary>
+            The Client Bridge is not connected to the device.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.ClientBridgeErrorCode.DeviceIsPxi">
+            <summary>
+            Device is PXI/PCI.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.ClientBridgeErrorCode.DeviceAlreadyConnected">
+            <summary>
+            Connection is already established, it doesn't need 
+            second session.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.ClientBridgeErrorCode.InvalidBoard">
+            <summary>
+            Invalid board index.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.ClientBridgeErrorCode.BoardNotSupported">
+            <summary>
+            Board index not supported.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.ClientBridgeErrorCode.ConnectionTimeout">
+            <summary>
+            Connection to LXI device timed out.
+            </summary>
+        </member>
+        <member name="F:Pickering.Lxi.ClientBridgeErrorCode.ConnectionFailed">
+            <summary>
+            Connection didn't timeout, but couldn't be established.
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.ClientErrors">
+            <summary>
+            It covers all types of the Client Bridge Communication module error.
+            </summary>
+            <remarks>It is for internal using only.</remarks>    
+        </member>
+        <member name="F:Pickering.Lxi.ClientErrors.errors">
+            <summary>
+            A dictionary of the errors. The key is an error code and value 
+            is its error message.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.ClientErrors.SetClientErrors">
+            <summary>
+            Initializies dictionary of error codes and error messages only 
+            one for application.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.ClientErrors.GetMessage(System.Int32)">
+            <summary>
+            Returns error messages for a given error code.
+            </summary>
+            <param name="code">The error code.</param>
+            <returns>An error message for the <i>error code</i>.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">The <i>code</i> 
+            is not error or description is missing.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.ClientErrors.IsError(System.Int32)">
+            <summary>
+            Tries out if the given code is valid error code.
+            </summary>        
+            <param name="code">A code which can be an error code.</param>
+            <returns><b>true</b> if <i>code</i> is error code; otherwise 
+            <b>false</b>.</returns>
+        </member>
+        <member name="T:Pickering.Lxi.DeviceException">
+            <summary>
+            The root exception class for all exceptions thrown by the Client 
+            Bridge or the Server Bridge.
+            </summary>
+            <remarks>It is general class for all the Client Bridge or the Server 
+            Bridge exceptions.</remarks>
+        </member>
+        <member name="P:Pickering.Lxi.DeviceException.ErrorCode">
+            <summary>
+            Error code of the exception.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.DeviceException.#ctor">
+            <summary>
+            Initializes a new instance of the <b>DeviceException</b> class.
+            </summary>
+        </member>
+        <member name="M:Pickering.Lxi.DeviceException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <b>DeviceException</b> class for 
+            the specific error message.
+            </summary>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:Pickering.Lxi.DeviceException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <b>DeviceException</b> class for 
+            the specific error message with an inner exception.
+            </summary>
+            <param name="message">The error message.</param>
+            <param name="innerException">The innner exception object.</param>
+        </member>
+        <member name="M:Pickering.Lxi.DeviceException.#ctor(System.Int32,System.String)">
+            <summary>
+            Initializes a new instance of the <b>DeviceException</b> class for 
+            the specific error message with an error code.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+            <param name="message">The error message.</param>
+        </member>
+        <member name="M:Pickering.Lxi.DeviceException.#ctor(System.Int32,System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <b>DeviceException</b> class for 
+            the specific error message with specific error code and an inner 
+            exception.
+            </summary>
+            <param name="errorCode">The error code of the exception.</param>
+            <param name="message">The error message.</param>
+            <param name="innerException">Inner exception object.</param>
+        </member>
+        <member name="M:Pickering.Lxi.DeviceException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <b>DeviceException</b> class for 
+            the specific serealization info and context.
+            </summary>
+            <remarks>Only for serialization purposes.</remarks>
+            <param name="info">A serialization info object.</param>
+            <param name="context">A serialization context object.</param>
+        </member>
+        <member name="M:Pickering.Lxi.DeviceException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Gets serialization information with all of the data needed to 
+            reinstantiate this assembly.
+            </summary>
+            <param name="info">The object to be populated with serialization 
+            information.</param>
+            <param name="context">The destination context of the serialization.
+            </param>
+        </member>
+        <member name="T:Pickering.Lxi.ServerBridgeErrorCode">
+            <summary>
+            All the Server Bridge errors.
+            </summary>
+            <remarks>For LXI only.</remarks>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.Success">
+            <summary>Success.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.InvalidFunction">
+            <summary>Function is invalid.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.InvalidData">
+            <summary>Received message is corrupted or is in unsupported format.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.InvalidCardId">
+            <summary>Card identification is invalid.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.InvalidAddress">
+            <summary>Address of card is invalid.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.OpenCard">
+            <summary>The card is used.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.AccessDenied">
+            <summary>This client has not any rights to the card(s). The card(s) is(are) probably used by another process.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.NotSupported">
+            <summary>Function is not supported by this LXI device.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.DeviceInfo">
+            <summary>Information about LXI device is not obtainable or is not all.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.OutOfResources">
+            <summary>Out of free resources (for example memory).</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.DataLength">
+            <summary>Required data are too long (array, string).</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.CardType">
+            <summary>The LXI device has not card of this type.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.FunctionNotImplemented">
+            <summary>Function is not implemented or it is reserved for the future using.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.ClientCardUsed">
+            <summary>The card is already used by the client.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.WaitTimeout">
+            <summary>Wait timeout expired.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.DeviceLocked">
+            <summary>The LXI device is locked. Another client has exclusive access to the device.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.InvalidSession">
+            <summary>Invalid session ID.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.InvalidToken">
+            <summary>Invalid security confirmation token.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.InvalidErrorCode">
+            <summary>Invalid error code.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.Fatal01">
+            <summary>Fatal state 01.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.DataCopy">
+            <summary>Error while copying output data to response buffer.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.CreateDirectoryFailed">
+            <summary>Create directory on LXI file-system failed.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.DeleteDirectoryFailed">
+            <summary>Delete directory on LXI file-system failed.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.DeleteFileFailed">
+            <summary>Delete file on LXI file-system failed.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.DirectoryNotExists">
+            <summary>Directory not exists on LXI file-system.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.FileNotExists">
+            <summary>File not exists on LXI file-system.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.FileOpenFailed">
+            <summary>Open file on LXI file-system failed.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.FileReadFail">
+            <summary>Read from file on LXI file-system failed.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.NoFileTransfer">
+            <summary>No active file transfer.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.FileWriteFailed">
+            <summary>Open file on LXI file-system failed.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.SetAttributesFailed">
+            <summary>Setting directory/file attribute on LXI file-system failed.</summary>
+        </member>
+        <member name="F:Pickering.Lxi.ServerBridgeErrorCode.ProtectionResetPerformed">
+            <summary>Protection reset performed.</summary>
+        </member>
+        <member name="T:Pickering.Lxi.ServerBridgeFunctionId">
+            <summary>
+            Represents constants of the FID (Function's ID)
+            </summary>
+        </member>
+        <member name="T:Pickering.Lxi.ServerErrors">
+            <summary>
+            All the Server Bridge errors.
+            </summary>
+            <remarks>It is for internal using only. For LXI only.</remarks>
+        </member>
+        <member name="M:Pickering.Lxi.ServerErrors.GetMessage(System.Int32)">
+            <summary>
+            Returns error messages for given error code.
+            </summary>
+            <param name="code">The error code.</param>
+            <returns>An error message for the <i>error code</i>.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">The <i>code</i> 
+            is not error.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.ServerErrors.GetMessage(System.Int32,Pickering.Lxi.Communication.DeviceManager)">
+            <summary>
+            Returns error messages for given error code.
+            </summary>
+            <param name="code">The error code.</param>
+            <param name="manager">The device manager.</param>
+            <returns>An error message for the <i>error code</i>.</returns>
+            <exception cref="T:System.ArgumentOutOfRangeException">The <i>code</i> 
+            is not error.</exception>
+        </member>
+        <member name="M:Pickering.Lxi.ServerErrors.IsError(System.Int32)">
+            <summary>
+            Tries out if the code is error.
+            </summary>        
+            <param name="code">A code which can be an error code.</param>
+            <returns><b>true</b> if <i>code</i> is error code; otherwise
+            <b>false</b>.</returns>
+        </member>
+        <member name="T:System.Runtime.CompilerServices.ExtensionAttribute">
+            <summary>
+            Indicates that a method is an extension method, or that a class or assembly contains extension methods.
+            </summary>
+        </member>
+    </members>
+</doc>
