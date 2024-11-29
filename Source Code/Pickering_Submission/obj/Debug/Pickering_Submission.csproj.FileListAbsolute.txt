@@ -23,3 +23,28 @@ D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test\Picke
 D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test\Pickering_Submission\Pickering_Submission\obj\Debug\Pickering Task- Dylan Harrison.exe
 D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test\Pickering_Submission\Pickering_Submission\obj\Debug\Pickering Task- Dylan Harrison.pdb
 D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test\Pickering_Submission\Pickering_Submission\obj\Debug\Pickering_Submission.csproj.AssemblyReference.cache
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering Task- Dylan Harrison.exe.config
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering Task- Dylan Harrison.exe.manifest
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering Task- Dylan Harrison.application
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering Task- Dylan Harrison.exe
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering Task- Dylan Harrison.pdb
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering.Lxi.Communication.dll
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering.Lxi.Piplx.dll
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering.Lxi.Vxi11.dll
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering.Pilpxi.Interop.dll
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering.Pipx40.Interop.dll
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering.Resources.PirmlInterop.dll
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering.Lxi.Communication.xml
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering.Lxi.Piplx.xml
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\bin\Debug\Pickering.Lxi.Vxi11.xml
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\obj\Debug\Pickering_Submission.csproj.AssemblyReference.cache
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\obj\Debug\Pickering_Submission.Form1.resources
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\obj\Debug\Pickering_Submission.PopUp.resources
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\obj\Debug\Pickering_Submission.Properties.Resources.resources
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\obj\Debug\Pickering_Submission.csproj.GenerateResource.cache
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\obj\Debug\Pickering_Submission.csproj.CoreCompileInputs.cache
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\obj\Debug\Pickering Task- Dylan Harrison.exe.manifest
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\obj\Debug\Pickering Task- Dylan Harrison.application
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\obj\Debug\Pickering_Submission.csproj.CopyComplete
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\obj\Debug\Pickering Task- Dylan Harrison.exe
+D:\OneDrive - University of Bath\Documents\GitHub\Pickering-Technical-Test-Submission\Source Code\Pickering_Submission\obj\Debug\Pickering Task- Dylan Harrison.pdb
